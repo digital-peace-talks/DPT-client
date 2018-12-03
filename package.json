@@ -1,0 +1,22 @@
+{
+  "name": "dpt-client",
+  "version": "1.0.0",
+  "description": "client side for DPT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozFri/DPT-client.git"
+  },
+  "keywords": [
+    "peace"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ozFri/DPT-client/issues"
+  },
+  "homepage": "https://github.com/ozFri/DPT-client#readme"
+}
