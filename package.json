@@ -25,9 +25,6 @@
     "vue-template-compiler": "^2.5.17",
     "vuetify-loader": "^1.0.5"
   },
-<<<<<<< Updated upstream
-  "homepage": "https://github.com/ozFri/DPT-client#readme"
-=======
   "eslintConfig": {
     "root": true,
     "env": {
@@ -52,5 +49,4 @@
     "last 2 versions",
     "not ie <= 8"
   ]
->>>>>>> Stashed changes
 }
