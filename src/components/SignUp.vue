@@ -1,11 +1,11 @@
 <template>
-  <v-container fill-height>
-    <v-layout column justify-center>
+  <v-container>
+    <v-layout column mt-5>
       <h1 class="headline mb-3">Your randomly generated private key is:</h1>
+      <v-snackbar v-model="copy">Private key successfully copied to clipboard!
+        <v-btn flat color="warning" @click.native="copy = false">Close</v-btn>
+      </v-snackbar>
       <v-form>
-        <v-snackbar v-model="copy">Private key successfully copied to clipboard!
-          <v-btn flat color="warning" @click.native="copy = false">Close</v-btn>
-        </v-snackbar>
         <v-textarea outline id="mnemonic" label="PassPhrase" name="private-key" :value="mnemonic"></v-textarea>
         <v-layout row wrap>
           <v-checkbox
