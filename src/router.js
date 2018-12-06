@@ -27,7 +27,8 @@ export default new Router ({
         name:"reCAPTCHA",
         component:ReCAPTCHA,
         },
-    ]
+    ],
+    mode: "history"
 })
 
 
