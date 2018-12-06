@@ -1,7 +1,6 @@
-import Vue from "vue"
 import Router from 'vue-router'
 import Home from './components/Home'
-import Login from './components/Login'
+import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
 import ReCAPTCHA from './components/ReCAPTCHA'
 
@@ -13,9 +12,9 @@ export default new Router ({
         component:Home,
         },
         {
-        path:"/login",
-        name:"login",
-        component:Login,
+        path:"/signin",
+        name:"signin",
+        component:SignIn,
         },
         {
         path:"/signup",

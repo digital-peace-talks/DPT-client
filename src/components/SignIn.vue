@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-layout column>
-        <h1 class="text-xs-center">Login</h1>
+        <h1 class="text-xs-center">Sign In</h1>
         <v-form>
             <v-textarea outline
                 label="PassPhrase"
@@ -15,7 +15,7 @@
 </template>
 <script>
 export default {
-  name: 'login',
+  name: 'signin',
   methods: {
     greet: function (event) {
       // `this` inside methods points to the Vue instance

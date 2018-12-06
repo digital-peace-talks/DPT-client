@@ -3,7 +3,7 @@
     <v-layout align-center justify-center column>
       <h1 class="display-1 mb-5">Welcome to Digital Peace Talks</h1>
       <v-btn to="/signup" color="primary" class="px-5">Sign up</v-btn>
-      <v-btn to="/login" color="secondary" class="px-5">Sign in</v-btn>
+      <v-btn to="/signin" color="secondary" class="px-5">Sign in</v-btn>
     </v-layout>
   </v-container>
 </template>
