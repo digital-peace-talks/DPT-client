@@ -1,7 +1,7 @@
 
 <template>
     <v-container>
-      <div class="g-recaptcha" :data-sitekey="rcapt_sig_key"></div>
+      <div id="recaptcha-main" class="g-recaptcha" :data-sitekey="rcapt_sig_key"></div>
     </v-container>
 </template>
 <script>
@@ -13,6 +13,11 @@ export default {
         rcapt_sig_key: "6LdeFX8UAAAAAOSJ33QM34axntsJzUomy3RWI6--",
         rcapt_id: 0 // will be used later
       }
+  },
+  created(){
+    this.$nextTick(function () {
+    grecaptcha.render('recaptcha-main');
+})
   },
   mounted() {
     if (window.grecaptcha) {
