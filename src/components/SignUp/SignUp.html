@@ -5,7 +5,7 @@
       <v-snackbar v-model="copy">Private key successfully copied to clipboard!
         <v-btn flat color="warning" @click.native="copy = false">Close</v-btn>
       </v-snackbar>
-      <v-form>
+      <v-form @submit.prevent="submit" ref="form" v-mode="valid" lazy-validation>
         <v-textarea outline id="mnemonic" label="PassPhrase" name="private-key" :value="mnemonic"></v-textarea>
         <v-layout row wrap>
           <v-checkbox
@@ -22,57 +22,18 @@
           >Download
             <v-icon right dark>save_alt</v-icon>
           </v-btn>
+          <div id="recaptcha-main" class="g-recaptcha" :data-sitekey="rcapt_sig_key"></div>
         </v-layout>
         <v-layout column align-center>
           <v-flex xs12 sm12 md12>
-            <v-btn to="/reCAPTCHA" class="px-5 my-5" color="primary">Sign up</v-btn>
+          <v-btn class="px-5 my-5" color="primary"
+            type="submit"
+          >
+            Sign up
+          </v-btn>
           </v-flex>
         </v-layout>
       </v-form>
     </v-layout>
   </v-container>
 </template>
-<script>
-import bip39 from "bip39";
-export default {
-  name: "signup",
-  data: function() {
-    return {
-      /**
-       * @type string
-       */
-      mnemonic: bip39.generateMnemonic(),
-      copy: false
-    };
-  },
-  methods: {
-    /**
-     * Downloads a file
-     * @param {string} filename the designated filename (e.g. key.txt)
-     * @param {string} text the content of the file
-     */
-    download(filename, text) {
-      var element = document.createElement("a");
-      element.setAttribute(
-        "href",
-        "data:text/plain;charset=utf-8," + encodeURIComponent(text)
-      );
-      element.setAttribute("download", filename);
-
-      element.style.display = "none";
-      document.body.appendChild(element);
-
-      element.click();
-
-      document.body.removeChild(element);
-    },
-    copyToClipboard() {
-      document.querySelector("#mnemonic").select();
-      document.execCommand("copy");
-      this.copy = true;
-    }
-  }
-};
-</script>
-<style>
-</style>

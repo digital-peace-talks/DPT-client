@@ -1,13 +1,3 @@
-<template>
-  <v-app>
-    <v-content>
-      <router-view/>
-    </v-content>
-  </v-app>
-</template>
-
-<script>
-export default {
-  name: "App"
-};
-</script>
+<template src="./App.html"></template>
+<script src="./App.js"></script>
+<style src="./App.css"></style>

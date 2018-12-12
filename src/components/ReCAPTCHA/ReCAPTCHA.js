@@ -1,10 +1,4 @@
 
-<template>
-    <v-container>
-      <div id="recaptcha-main" class="g-recaptcha" :data-sitekey="rcapt_sig_key"></div>
-    </v-container>
-</template>
-<script>
 import bip39 from "bip39"
 export default {
   name: 'signup',
@@ -26,7 +20,4 @@ export default {
   }
 }
 
-</script>
-<style>
 
-</style>
