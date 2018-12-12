@@ -2,7 +2,6 @@ import Router from 'vue-router'
 import Home from './components/Home'
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
-import ReCAPTCHA from './components/ReCAPTCHA'
 
 export default new Router ({
     routes: [
@@ -20,12 +19,7 @@ export default new Router ({
         path:"/signup",
         name:"signup",
         component:SignUp,
-        },
-        {
-        path:"/reCAPTCHA",
-        name:"reCAPTCHA",
-        component:ReCAPTCHA,
-        },
+        }
     ],
     mode: "history"
 })
