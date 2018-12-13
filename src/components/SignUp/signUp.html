@@ -4,12 +4,11 @@
       <v-snackbar v-model="copy">Private key successfully copied to clipboard!
         <v-btn flat color="warning" @click.native="copy = false">Close</v-btn>
       </v-snackbar>
-      <v-form @submit.prevent="submit" ref="form" v-model="valid" lazy-validation>
+      <v-form @submit.prevent="signUp" ref="form"  lazy-validation>
         <v-textarea outline id="mnemonic" label="PassPhrase" name="private-key" :value="mnemonic"></v-textarea>
         <v-layout row wrap>
           <v-checkbox
             label="Remember me (browser cookie)"
-            v-model="value"
             value="value"
             class="left ma-0 pa-0"
           ></v-checkbox>
@@ -21,11 +20,21 @@
           >Download
             <v-icon right dark>save_alt</v-icon>
           </v-btn>
-          <div id="recaptcha-main" class="g-recaptcha" :data-sitekey="rcapt_sig_key"></div>
+          
+        <ReCAPTCHA
+            ref="invisibleRecaptcha1"
+            :sitekey="'6Lej7IAUAAAAAPNCjArbGo2M77bzOQ2IP9t-e3Ma'"
+            
+            :elementId="'invisibleRecaptcha1'"
+            :badgePosition="'left'"
+            :showBadgeMobile="false"
+            :showBadgeDesktop="true"
+            @recaptcha-callback="recaptchaCallback"
+        ></ReCAPTCHA>
         </v-layout>
         <v-layout column align-center>
           <v-flex xs12 sm12 md12>
-          <v-btn class="px-5 my-5" color="primary"
+          <v-btn  @click.prevent="submitButtonClicked" class="px-5 my-5" color="primary"
             type="submit"
           >
             Sign up
