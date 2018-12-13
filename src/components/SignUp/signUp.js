@@ -1,6 +1,6 @@
 import bip39 from "bip39";
-import { myLoginRoutine } from '../../mixins/mixins';
 import ReCAPTCHA from '../ReCAPTCHA/ReCAPTCHA.vue';
+import AuthMixin from "../../mixins/auth.mixin";
 
 export default {
     name: "signup",
@@ -10,38 +10,34 @@ export default {
     data: function () {
         return {
             /**
-       * @type string
-       */
+             * @type string
+             */
             mnemonic: bip39.generateMnemonic(),
-            copy: false,
-            recaptchaToken: null
+            showCopiedMessage: false,
+            shouldRememberMnemonic: false,
         };
     },
-    mounted() {
-    },
+    mixins: [AuthMixin],
     methods: {
-        submitButtonClicked() {
+        /**
+         * Executes sign up
+         */
+        signUpSubmitted() {
+            if (this.shouldRememberMnemonic) {
+                this.saveMnemonic(this.mnemonic);
+            }
             this.$refs.invisibleRecaptcha1.execute();
         },
         recaptchaCallback(recaptchaToken) {
-            console.log(recaptchaToken)
-            this.recaptchaToken = recaptchaToken
-            if (this.recaptchaToken != null) {
-                this.$router.push('/signin')
+            if (recaptchaToken != null) {
+                this.signUp(recaptchaToken);
             }
         },
-        removeToken() {
-            this.recaptchaToken = null
-        },
-        signUp() {
-            //secretKey=6Lej7IAUAAAAAMIF8rAvdGwPWnHemx9bDZiw8STC
-            //myLoginRoutine({}).then(() => {
-        },
         /**
-     * Downloads a file
-     * @param {string} filename the designated filename (e.g. key.txt)
-     * @param {string} text the content of the file
-     */
+         * Downloads a file
+         * @param {string} filename the designated filename (e.g. key.txt)
+         * @param {string} text the content of the file
+         */
         download(filename, text) {
             var element = document.createElement("a");
             element.setAttribute(
@@ -60,7 +56,7 @@ export default {
         copyToClipboard() {
             document.querySelector("#mnemonic").select();
             document.execCommand("copy");
-            this.copy = true;
+            this.showCopiedMessage = true;
         }
     }
 };

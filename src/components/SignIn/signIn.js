@@ -1,40 +1,51 @@
 import bip39 from 'bip39';
+import AuthMixin from '../../mixins/auth.mixin';
 
 export default {
     name: "signin",
+    mixins: [AuthMixin],
     data() {
         return {
             /**
              * @type string
              */
-            mnemonic: null,
+            mnemonic: this.loadMnemonic(),
             rules: {
-                validateMnemonic: (value) => {
-                    const wordCount = value.trim().split(/\s+/).length
-                    if (wordCount > 12) {
-                        return "passphrase too long, must be 12 words"
+                validateMnemonic(value) {
+                    if (value != null) {
+                        const wordCount = value.trim().split(/\s+/).length;
+                        if (wordCount > 12) {
+                            return "passphrase too long, must be 12 words";
+                        }
+                        if (wordCount < 12) {
+                            return "passphrase too short, must be 12 words";
+                        }
+                        if (!bip39.validateMnemonic(value)) {
+                            return "passphrase doesn't match";
+                        }
                     }
-                    if (wordCount < 12) {
-                        return "passphrase too short, must be 12 words"
-                    }
-                    if (!bip39.validateMnemonic(value)) {
-                        return "passphrase doesn't match"
-                    }
-                    return true
+                    return true;
                 }
-            }
-        }
+            },
+            shouldRememberMnemonic: false
+        };
     },
     methods: {
-        login() {
-            console.log(this.mnemonic)
-        },
         /**
          * Sets this.key according to clipboard text
          */
         pasteFromClipboard() {
             navigator.clipboard.readText().then(text => (this.mnemonic = text));
         },
+        signInSubmitted() {
+            if (this.shouldRememberMnemonic) {
+                this.saveMnemonic(this.mnemonic);
+            }
+            this.signIn();
+        },
+        /**
+         * Opens the file dialog for the user to pick the mnemonic file
+         */
         loadFile() {
             this.$refs.fileInput.click();
         },
@@ -55,5 +66,6 @@ export default {
                 reader.readAsText(files[0]);
             }
         }
+        
     }
 };

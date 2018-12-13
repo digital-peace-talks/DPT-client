@@ -38,7 +38,8 @@
       "eslint:recommended"
     ],
     "rules": {
-      "indent": [1, 4]
+      "indent": [1, 4],
+      "semi": [1, "always"]
     },
     "parserOptions": {
       "parser": "babel-eslint"

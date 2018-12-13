@@ -1,11 +1,11 @@
 <v-container>
   <v-layout column mt-5>
     <h1 class="headline mb-3">Enter your private key</h1>
-    <form @submit.prevent="login">
+    <form @submit.prevent="signInSubmitted">
       <input type="file" style="display:none" ref="fileInput" @change="onFilePicked">
       <v-textarea :rules="[rules.validateMnemonic]" outline label="Private Key" name="private-key" v-model="mnemonic"></v-textarea>
       <v-layout row wrap>
-        <v-checkbox label="Remember me (browser cookie)" class="left ma-0 pa-0"></v-checkbox>
+        <v-checkbox v-model="shouldRememberMnemonic" label="Remember me (browser cookie)" class="left ma-0 pa-0"></v-checkbox>
         <v-btn @click="loadFile" color="success" class="right">Load File
           <v-icon right>folder_open</v-icon>
         </v-btn>

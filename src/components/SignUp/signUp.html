@@ -1,45 +1,28 @@
-  <v-container>
-    <v-layout column mt-5>
-      <h1 class="headline mb-3">Your randomly generated private key is:</h1>
-      <v-snackbar v-model="copy">Private key successfully copied to clipboard!
-        <v-btn flat color="warning" @click.native="copy = false">Close</v-btn>
-      </v-snackbar>
-      <v-form @submit.prevent="signUp" ref="form"  lazy-validation>
-        <v-textarea outline id="mnemonic" label="PassPhrase" name="private-key" :value="mnemonic"></v-textarea>
-        <v-layout row wrap>
-          <v-checkbox
-            label="Remember me (browser cookie)"
-            value="value"
-            class="left ma-0 pa-0"
-          ></v-checkbox>
-          <v-btn @click="copyToClipboard" color="success" class="right">Copy to clipboard</v-btn>
-          <v-btn
-            color="secondary"
-            class="right"
-            @click="download('private_key.txt', mnemonic)"
-          >Download
-            <v-icon right dark>save_alt</v-icon>
-          </v-btn>
-          
-        <ReCAPTCHA
-            ref="invisibleRecaptcha1"
-            :sitekey="'6Ld6AoEUAAAAAL7pILyHmNIPvJkXZg8Wi0LXydAE'"
-            :elementId="'invisibleRecaptcha1'"
-            :badgePosition="'left'"
-            :showBadgeMobile="false"
-            :showBadgeDesktop="true"
-            @recaptcha-callback="recaptchaCallback"
-        ></ReCAPTCHA>
-        </v-layout>
-        <v-layout column align-center>
-          <v-flex xs12 sm12 md12>
-          <v-btn  @click.prevent="submitButtonClicked" class="px-5 my-5" color="primary"
-            type="submit"
-          >
+<v-container>
+  <v-layout column mt-5>
+    <h1 class="headline mb-3">Your randomly generated private key is:</h1>
+    <v-snackbar v-model="showCopiedMessage">Private key successfully copied to clipboard!
+      <v-btn flat color="warning" @click.native="showCopiedMessage = false">Close</v-btn>
+    </v-snackbar>
+    <v-form @submit.prevent="signUpSubmitted" ref="form" lazy-validation>
+      <v-textarea outline id="mnemonic" label="PassPhrase" name="private-key" :value="mnemonic"></v-textarea>
+      <v-layout row wrap>
+        <v-checkbox label="Remember me (browser cookie)" v-model="shouldRememberMnemonic" class="left ma-0 pa-0"></v-checkbox>
+        <v-btn @click="copyToClipboard" color="success" class="right">Copy to clipboard</v-btn>
+        <v-btn color="secondary" class="right" @click="download('dpt_mnemonic.txt', mnemonic)">Download
+          <v-icon right dark>save_alt</v-icon>
+        </v-btn>
+
+        <ReCAPTCHA ref="invisibleRecaptcha1" :sitekey="'6Ld6AoEUAAAAAL7pILyHmNIPvJkXZg8Wi0LXydAE'" :elementId="'invisibleRecaptcha1'"
+          :badgePosition="'left'" :showBadgeMobile="false" :showBadgeDesktop="true" @recaptcha-callback="recaptchaCallback"></ReCAPTCHA>
+      </v-layout>
+      <v-layout column align-center>
+        <v-flex xs12 sm12 md12>
+          <v-btn class="px-5 my-5" color="primary" type="submit">
             Sign up
           </v-btn>
-          </v-flex>
-        </v-layout>
-      </v-form>
-    </v-layout>
-  </v-container>
+        </v-flex>
+      </v-layout>
+    </v-form>
+  </v-layout>
+</v-container>
