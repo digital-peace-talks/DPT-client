@@ -9,24 +9,24 @@ export default {
              */
             mnemonic: null,
             rules: {
-                validateMnemonic:(value) => {
-                    const wordCount=value.trim().split(/\s+/).length
-                    if(wordCount>12){
+                validateMnemonic: (value) => {
+                    const wordCount = value.trim().split(/\s+/).length
+                    if (wordCount > 12) {
                         return "passphrase too long, must be 12 words"
                     }
-                    if(wordCount<12){
+                    if (wordCount < 12) {
                         return "passphrase too short, must be 12 words"
                     }
-                    if(!bip39.validateMnemonic(value)){
+                    if (!bip39.validateMnemonic(value)) {
                         return "passphrase doesn't match"
                     }
                     return true
-                } 
+                }
             }
         }
     },
     methods: {
-        login(){
+        login() {
             console.log(this.mnemonic)
         },
         /**

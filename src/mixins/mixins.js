@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 // Exported in a shared file
-export const mixin ={
-    methods:{
-        myLoginRoutine : user => new Promise((resolve, reject) => {
+export const mixin = {
+    methods: {
+        myLoginRoutine: user => new Promise((resolve, reject) => {
             axios({ url: 'auth', data: user, method: 'POST' })
                 .then(resp => {
                     const token = resp.data.token
@@ -15,5 +15,5 @@ export const mixin ={
                     reject(err)
                 })
         })
-}
+    }
 }

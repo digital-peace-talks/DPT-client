@@ -21,13 +21,13 @@ export default {
             type: String
         }
     },
-    data () {
+    data() {
         return {
             gAssignedId: null,
             captchaReady: false,
             checkInterval: null,
             checkIntervalRunCount: 0
-        }
+        };
     },
     computed: {
         styleClassObject: function () {
@@ -39,19 +39,19 @@ export default {
         }
     },
     methods: {
-        execute () {
-            window.grecaptcha.execute(this.gAssignedId)
+        execute() {
+            window.grecaptcha.execute(this.gAssignedId);
         },
-        reset () {
-            window.grecaptcha.reset(this.gAssignedId)
+        reset() {
+            window.grecaptcha.reset(this.gAssignedId);
         },
-        callback (recaptchaToken) {
+        callback(recaptchaToken) {
             // Emit an event called recaptchaCallback with the recaptchaToken as payload
-            this.$emit('recaptcha-callback', recaptchaToken)
+            this.$emit('recaptcha-callback', recaptchaToken);
             // Reset the recaptcha widget so you can execute it again
             this.reset()
         },
-        render () {
+        render() {
             this.gAssignedId = window.grecaptcha.render(this.elementId, {
                 sitekey: this.sitekey,
                 size: 'invisible',
@@ -69,22 +69,22 @@ export default {
             // we'll watch the captchaReady value in order to
             this.checkInterval = setInterval(() => {
                 this.checkIntervalRunCount++
-                if (window.grecaptcha && window.grecaptcha.hasOwnProperty('render')){
+                if (window.grecaptcha && window.grecaptcha.hasOwnProperty('render')) {
                     this.captchaReady = true
                 }
             }, 1000)
         }
     },
     watch: {
-        captchaReady: function(data) {
+        captchaReady: function (data) {
             if (data) {
                 clearInterval(this.checkInterval)
                 this.render()
             }
         }
     },
-    mounted () {
-        // Initialize the recaptcha
+    mounted() {
+    // Initialize the recaptcha
         this.init()
     }
 }

@@ -7,27 +7,27 @@ export default {
     components: {
         'ReCAPTCHA': ReCAPTCHA,
     },
-    data: function() {
+    data: function () {
         return {
             /**
-             * @type string
-             */
+       * @type string
+       */
             mnemonic: bip39.generateMnemonic(),
             copy: false,
-            recaptchaToken:null
+            recaptchaToken: null
         };
     },
     mounted() {
     },
     methods: {
-        submitButtonClicked () {
-            this.$refs.invisibleRecaptcha1.execute()
+        submitButtonClicked() {
+            this.$refs.invisibleRecaptcha1.execute();
         },
-        recaptchaCallback(recaptchaToken){
+        recaptchaCallback(recaptchaToken) {
             console.log(recaptchaToken)
             this.recaptchaToken = recaptchaToken
-            if (this.recaptchaToken!=null){
-            this.$router.push('/signin')
+            if (this.recaptchaToken != null) {
+                this.$router.push('/signin')
             }
         },
         removeToken() {
@@ -38,10 +38,10 @@ export default {
             //myLoginRoutine({}).then(() => {
         },
         /**
-         * Downloads a file
-         * @param {string} filename the designated filename (e.g. key.txt)
-         * @param {string} text the content of the file
-         */
+     * Downloads a file
+     * @param {string} filename the designated filename (e.g. key.txt)
+     * @param {string} text the content of the file
+     */
         download(filename, text) {
             var element = document.createElement("a");
             element.setAttribute(
