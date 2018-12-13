@@ -30,7 +30,7 @@ export default {
         },
         recaptchaCallback(recaptchaToken) {
             if (recaptchaToken != null) {
-                this.signUp(recaptchaToken);
+                this.signUp(recaptchaToken).then(() => this.$router.push("/signin"));
             }
         },
         /**

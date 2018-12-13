@@ -5,7 +5,7 @@ const mnemonicCookie = 'mnemonic';
 export default {
     data() {
         return {
-            recaptchaSiteKey: '6Ld6AoEUAAAAAL7pILyHmNIPvJkXZg8Wi0LXydAE'
+            recaptchaSiteKey: '6Lej7IAUAAAAAPNCjArbGo2M77bzOQ2IP9t-e3Ma'
         };
     },
     methods: {

@@ -49,7 +49,7 @@ export default {
         },
         recaptchaCallback(recaptchaToken) {
             if (recaptchaToken != null) {
-                this.signIn(recaptchaToken).then(() => null);
+                this.signIn(recaptchaToken).then(() => this.$router.push("/"));
             }
         },
         /**
