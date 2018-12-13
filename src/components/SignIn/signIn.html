@@ -1,9 +1,9 @@
 <v-container>
   <v-layout column mt-5>
     <h1 class="headline mb-3">Enter your private key</h1>
-    <v-form>
+    <form>
       <input type="file" style="display:none" ref="fileInput" @change="onFilePicked">
-      <v-textarea outline label="Private Key" name="private-key" v-model="key"></v-textarea>
+      <v-textarea :rules="[rules.validateMnemonic]" outline label="Private Key" name="private-key" v-model="key"></v-textarea>
       <v-layout row wrap>
         <v-checkbox label="Remember me (browser cookie)" class="left ma-0 pa-0"></v-checkbox>
         <v-btn @click="loadFile" color="success" class="right">Load File
@@ -16,6 +16,6 @@
           <v-btn to="/reCAPTCHA" class="px-5 my-5" color="primary">Sign In</v-btn>
         </v-flex>
       </v-layout>
-    </v-form>
+    </form>
   </v-layout>
 </v-container>
