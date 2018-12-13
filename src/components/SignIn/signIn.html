@@ -10,6 +10,8 @@
           <v-icon right>folder_open</v-icon>
         </v-btn>
         <v-btn @click="pasteFromClipboard" color="secondary" class="right">Paste from clipboard</v-btn>
+        <ReCAPTCHA ref="recaptcha" :sitekey="recaptchaSiteKey" elementId="recaptcha" :badgePosition="'left'"
+          :showBadgeMobile="false" :showBadgeDesktop="true" @recaptcha-callback="recaptchaCallback"></ReCAPTCHA>
       </v-layout>
       <v-layout column align-center>
         <v-flex xs12 sm12 md12>

@@ -26,16 +26,16 @@ export default {
             gAssignedId: null,
             captchaReady: false,
             checkInterval: null,
-            checkIntervalRunCount: 0
+            captcha: window.grecaptcha
         };
     },
     computed: {
-        styleClassObject: function () {
+        styleClassObject() {
             return {
                 'g-recaptcha--left': (this.badgePosition === 'left'),
                 'g-recaptcha--mobile-hidden': (!this.showBadgeMobile),
                 'g-recaptcha--desktop-hidden': (!this.showBadgeDesktop)
-            }
+            };
         }
     },
     methods: {
@@ -49,7 +49,7 @@ export default {
             // Emit an event called recaptchaCallback with the recaptchaToken as payload
             this.$emit('recaptcha-callback', recaptchaToken);
             // Reset the recaptcha widget so you can execute it again
-            this.reset()
+            this.reset();
         },
         render() {
             this.gAssignedId = window.grecaptcha.render(this.elementId, {
@@ -57,34 +57,33 @@ export default {
                 size: 'invisible',
                 // the callback executed when the user solve the recaptcha
                 'callback': (recaptchaToken) => {
-                    this.callback(recaptchaToken)
+                    this.callback(recaptchaToken);
                 },
                 'expired-callback': () => {
-                    this.reset()
+                    this.reset();
                 }
-            })
+            });
         },
         init() {
             // render the recaptcha widget when the component is mounted
             // we'll watch the captchaReady value in order to
             this.checkInterval = setInterval(() => {
-                this.checkIntervalRunCount++
                 if (window.grecaptcha && window.grecaptcha.hasOwnProperty('render')) {
-                    this.captchaReady = true
+                    this.captchaReady = true;
                 }
-            }, 1000)
+            }, 100);
         }
     },
     watch: {
-        captchaReady: function (data) {
-            if (data) {
-                clearInterval(this.checkInterval)
-                this.render()
+        captchaReady(value) {
+            if (value) {
+                clearInterval(this.checkInterval);
+                this.render();
             }
         }
     },
     mounted() {
-    // Initialize the recaptcha
-        this.init()
+        // Initialize the recaptcha
+        this.init();
     }
-}
+};

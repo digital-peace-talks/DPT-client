@@ -13,7 +13,7 @@
           <v-icon right dark>save_alt</v-icon>
         </v-btn>
 
-        <ReCAPTCHA ref="invisibleRecaptcha1" :sitekey="'6Ld6AoEUAAAAAL7pILyHmNIPvJkXZg8Wi0LXydAE'" :elementId="'invisibleRecaptcha1'"
+        <ReCAPTCHA ref="recaptcha" :sitekey="recaptchaSiteKey" elementId="recaptcha"
           :badgePosition="'left'" :showBadgeMobile="false" :showBadgeDesktop="true" @recaptcha-callback="recaptchaCallback"></ReCAPTCHA>
       </v-layout>
       <v-layout column align-center>

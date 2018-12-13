@@ -1,8 +1,12 @@
 import bip39 from 'bip39';
+import ReCAPTCHA from '../ReCAPTCHA/ReCAPTCHA.vue';
 import AuthMixin from '../../mixins/auth.mixin';
 
 export default {
     name: "signin",
+    components: {
+        'ReCAPTCHA': ReCAPTCHA,
+    },
     mixins: [AuthMixin],
     data() {
         return {
@@ -41,7 +45,12 @@ export default {
             if (this.shouldRememberMnemonic) {
                 this.saveMnemonic(this.mnemonic);
             }
-            this.signIn();
+            this.$refs.recaptcha.execute();
+        },
+        recaptchaCallback(recaptchaToken) {
+            if (recaptchaToken != null) {
+                this.signIn(recaptchaToken).then(() => null);
+            }
         },
         /**
          * Opens the file dialog for the user to pick the mnemonic file

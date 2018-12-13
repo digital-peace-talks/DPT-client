@@ -26,7 +26,7 @@ export default {
             if (this.shouldRememberMnemonic) {
                 this.saveMnemonic(this.mnemonic);
             }
-            this.$refs.invisibleRecaptcha1.execute();
+            this.$refs.recaptcha.execute();
         },
         recaptchaCallback(recaptchaToken) {
             if (recaptchaToken != null) {
