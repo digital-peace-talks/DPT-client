@@ -3,11 +3,11 @@
 
 
 // eslint-disable-next-line no-unused-vars
-import { NightwatchBrowser } from "nightwatch";
+const nightwatch = require('nightwatch');
 
 /**
  * The main test
- * @param {NightwatchBrowser} browser 
+ * @param {nightwatch.NightwatchBrowser} browser 
  */
 function main(browser) {
   browser
