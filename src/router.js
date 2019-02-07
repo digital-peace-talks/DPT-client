@@ -2,6 +2,7 @@ import Router from 'vue-router';
 import Home from './components/Home/Home.vue';
 import SignIn from './components/SignIn/SignIn.vue';
 import SignUp from './components/SignUp/SignUp.vue';
+import Chat from './components/Chat/Chat.vue';
 
 export default new Router({
     routes: [{
@@ -18,6 +19,11 @@ export default new Router({
         path: "/signup",
         name: "signup",
         component: SignUp,
+    },
+    {
+        path: "/chat",
+        name: "chat",
+        component: Chat,
     },
     ],
     mode: "history"
