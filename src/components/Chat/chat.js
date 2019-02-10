@@ -1,7 +1,7 @@
   import Message from './Message.vue'
   import EmojiPicker from './EmojiPicker.vue'
   import Chats from './Chats.vue'
-  //import * as firebase from 'firebase'
+  import * as firebase from 'firebase'
   export default {
     data () {
       return {
@@ -18,11 +18,11 @@
     ],
     mounted () {
       this.loadChat()
-      this.$store.dispatch('loadOnlineUsers')
+      //this.$store.dispatch('loadOnlineUsers')
     },
     components: {
       'message': Message,
-      'emoji-picker': EmojiPicker,
+      //'emoji-picker': EmojiPicker,
       'chats': Chats
     },
     computed: {
@@ -30,7 +30,7 @@
         return this.chatMessages
       },
       username () {
-        return this.$store.getters.user.username
+        return "Iwan" //this.$store.getters.user.username
       },
       onChildAdded () {
         const that = this
@@ -71,7 +71,7 @@
         if (this.id !== undefined) {
           this.chatMessages = []
           let chatID = this.id
-         // this.currentRef = firebase.database().ref('messages').child(chatID).child('messages').limitToLast(20)
+         this.currentRef = firebase.database().ref('messages').child(chatID).child('messages').limitToLast(20)
           this.currentRef.on('child_added', this.onChildAdded)
         }
       },
@@ -87,19 +87,19 @@
             this.loading = false
             return
           }
-          //firebase.database().ref('messages').child(chatID).child('messages').orderByKey().endAt(currentTopMessage.key).limitToLast(20).once('value').then(
-          //   function (snapshot) {
-          //     let tempArray = []
-          //     snapshot.forEach(function (item) {
-          //       tempArray.push(item)
-          //     })
-          //     if (tempArray[0].key === tempArray[1].key) return
-          //     console.log(tempArray)
-          //     tempArray.reverse()
-          //     tempArray.forEach(function (child) { that.onChildAdded(child, false) })
-          //     that.loading = false
-          //   }
-          // )
+          firebase.database().ref('messages').child(chatID).child('messages').orderByKey().endAt(currentTopMessage.key).limitToLast(20).once('value').then(
+            function (snapshot) {
+              let tempArray = []
+              snapshot.forEach(function (item) {
+                tempArray.push(item)
+              })
+              if (tempArray[0].key === tempArray[1].key) return
+              console.log(tempArray)
+              tempArray.reverse()
+              tempArray.forEach(function (child) { that.onChildAdded(child, false) })
+              that.loading = false
+            }
+          )
         }
       },
       processMessage (message) {
@@ -117,7 +117,7 @@
       },
       sendMessage () {
         if (this.content !== '') {
-          this.$store.dispatch('sendMessage', { username: this.username, content: this.content, date: new Date().toString(), chatID: this.id })
+          this.$store.dispatch('sendMessage', { username: this.username, content: this.content, date: new Date().toString(), chatID: "1" })
           this.content = ''
         }
       },
