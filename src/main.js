@@ -23,7 +23,7 @@ new Vue({
       authDomain: "digital-peace-talks-c6698.firebaseapp.com",
       databaseURL: "https://digital-peace-talks-c6698.firebaseio.com",
       projectId: "digital-peace-talks-c6698",
-      storageBucket: ""
-      //messagingSenderId: "1087669482589"
+      storageBucket: "digital-peace-talks-c6698.appspot.com",
+      messagingSenderId: "1087669482589"
     })}
 }).$mount('#app');
