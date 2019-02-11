@@ -36,7 +36,7 @@ const ChatModule = {
       let chats = chatRef//.get()
       if(chats){
         //console.log(chats.get())
-        commit('setChats',[{statement: 'asd'},{statement: 'bsd'}])
+        commit('setChats',[{statement: 'asd',author:"Alice"},{statement: 'bsd',author:"Alice"}])
       }
     },
     createChat ({commit}, payload) {
