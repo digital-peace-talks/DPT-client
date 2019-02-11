@@ -7,7 +7,7 @@
       'messages'
     ],
     components: {
-      'chat-image': Image
+      //'chat-image': Image
     },
     computed: {
       username () {

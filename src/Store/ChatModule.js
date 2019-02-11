@@ -20,7 +20,7 @@ const ChatModule = {
         content: payload.content,
         date: payload.date
       }
-      firebase.database().ref('messages').child(chatID).child('messages').push(message)
+      firebase.firestore().collection('messages').doc(chatID).collection('messages').add(message)
         .then(
           (data) => {
           }
@@ -32,15 +32,15 @@ const ChatModule = {
         )
     },
     loadChats ({commit}) {
-      firebase.database().ref('chats').on('value', function (snapshot) {
-        commit('setChats', snapshot.val())
-      })
+      let chatRef =firebase.firestore().collection('chats')
+      let chats = chatRef//.get()
+      if(chats){
+        //console.log(chats.get())
+        commit('setChats',[{statement: 'asd'},{statement: 'bsd'}])
+      }
     },
     createChat ({commit}, payload) {
-      let newPostKey = firebase.database().ref().child('chats').push().key
-      let updates = {}
-      updates['/chats/' + newPostKey] = {name: payload.chatName}
-      firebase.database().ref().update(updates)
+      //do something with firestore
       return new Promise((resolve, reject) => {
         resolve(newPostKey)
       })

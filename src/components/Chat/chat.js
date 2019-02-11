@@ -1,6 +1,6 @@
-  import Message from './Message.vue'
-  import EmojiPicker from './EmojiPicker.vue'
-  import Chats from './Chats.vue'
+  import Message from './Message/Message.vue'
+  //import EmojiPicker from './EmojiPicker.vue'
+  import Chats from './Chats/Chats.vue'
   import * as firebase from 'firebase'
   export default {
     data () {
@@ -49,10 +49,10 @@
           message.content = message.content.replace(urlPattern, "<a href='$1'>$1</a>")
           if (!newMessage) {
             that.chatMessages.unshift(that.processMessage(message))
-            that.scrollTo()
+            // that.scrollTo()
           } else {
             that.chatMessages.push(that.processMessage(message))
-            that.scrollToEnd()
+            // that.scrollToEnd()
           }
         }
         return onChildAdded
@@ -66,42 +66,39 @@
     },
     methods: {
       loadChat () {
-        this.totalChatHeight = this.$refs.chatContainer.scrollHeight
+        // this.totalChatHeight = this.$refs.chatContainer.scrollHeight
         this.loading = false
         if (this.id !== undefined) {
           this.chatMessages = []
           let chatID = this.id
-         this.currentRef = firebase.database().ref('messages').child(chatID).child('messages').limitToLast(20)
-          this.currentRef.on('child_added', this.onChildAdded)
         }
       },
-      onScroll () {
-        let scrollValue = this.$refs.chatContainer.scrollTop
-        const that = this
-        if (scrollValue < 100 && !this.loading) {
-          this.totalChatHeight = this.$refs.chatContainer.scrollHeight
-          this.loading = true
-          let chatID = this.id
-          let currentTopMessage = this.chatMessages[0]
-          if (currentTopMessage === undefined) {
-            this.loading = false
-            return
-          }
-          firebase.database().ref('messages').child(chatID).child('messages').orderByKey().endAt(currentTopMessage.key).limitToLast(20).once('value').then(
-            function (snapshot) {
-              let tempArray = []
-              snapshot.forEach(function (item) {
-                tempArray.push(item)
-              })
-              if (tempArray[0].key === tempArray[1].key) return
-              console.log(tempArray)
-              tempArray.reverse()
-              tempArray.forEach(function (child) { that.onChildAdded(child, false) })
-              that.loading = false
-            }
-          )
-        }
-      },
+      // onScroll () {
+      //   let scrollValue = this.$refs.chatContainer.scrollTop
+      //   const that = this
+      //   if (scrollValue < 100 && !this.loading) {
+      //     this.totalChatHeight = this.$refs.chatContainer.scrollHeight
+      //     this.loading = true
+      //     let chatID = this.id
+      //     let currentTopMessage = this.chatMessages[0]
+      //     if (currentTopMessage === undefined) {
+      //       this.loading = false
+      //       return
+      //     }
+      //       // function (snapshot) {
+      //       //   let tempArray = []
+      //       //   snapshot.forEach(function (item) {
+      //       //     tempArray.push(item)
+      //       //   })
+      //       //   if (tempArray[0].key === tempArray[1].key) return
+      //       //   console.log(tempArray)
+      //       //   tempArray.reverse()
+      //       //   tempArray.forEach(function (child) { that.onChildAdded(child, false) })
+      //       //   that.loading = false
+      //       // }
+      //     // )
+      //   }
+      // },
       processMessage (message) {
         /*eslint-disable */
         var imageRegex = /([^\s\']+).(?:jpg|jpeg|gif|png)/i
@@ -121,20 +118,20 @@
           this.content = ''
         }
       },
-      scrollToEnd () {
-        this.$nextTick(() => {
-          var container = this.$el.querySelector('.chat-container')
-          container.scrollTop = container.scrollHeight
-        })
-      },
-      scrollTo () {
-        this.$nextTick(() => {
-          let currentHeight = this.$refs.chatContainer.scrollHeight
-          let difference = currentHeight - this.totalChatHeight
-          var container = this.$el.querySelector('.chat-container')
-          container.scrollTop = difference
-        })
-      },
+      // scrollToEnd () {
+      //   this.$nextTick(() => {
+      //     var container = this.$el.querySelector('.chat-container')
+      //     container.scrollTop = container.scrollHeight
+      //   })
+      // },
+      // scrollTo () {
+      //   this.$nextTick(() => {
+      //     let currentHeight = this.$refs.chatContainer.scrollHeight
+      //     let difference = currentHeight - this.totalChatHeight
+      //     var container = this.$el.querySelector('.chat-container')
+      //     container.scrollTop = difference
+      //   })
+      // },
       addMessage (emoji) {
         this.content += emoji.value
       },
