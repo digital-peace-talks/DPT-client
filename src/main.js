@@ -12,11 +12,9 @@ import {store} from './Store';
 Vue.config.productionTip = false;
 Vue.use (Vuetify);
 Vue.use (VueRouter);
+window.app = new Vue();
 
 new Vue({
-  render: h => h(App),
-  router,
-  store,
   created () {
     firebase.initializeApp({
       apiKey: "AIzaSyAw0V5QUQKO27W9Fx16_YSbeqBdJ3f41hM",
@@ -25,5 +23,8 @@ new Vue({
       projectId: "digital-peace-talks-c6698",
       storageBucket: "digital-peace-talks-c6698.appspot.com",
       messagingSenderId: "1087669482589"
-    })}
+    })},
+  render: h => h(App),
+  router,
+  store
 }).$mount('#app');
