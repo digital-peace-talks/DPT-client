@@ -47,19 +47,10 @@
       "eslint:recommended",
       "@vue/prettier"
     ],
-    "rules": {
-      "indent": [
-        1,
-        4
-      ],
-      "semi": [
-        1,
-        "always"
-      ]
-    },
     "parserOptions": {
       "parser": "babel-eslint"
-    }
+    },
+    "rules": {}
   },
   "postcss": {
     "plugins": {
