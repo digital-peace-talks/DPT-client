@@ -1,5 +1,7 @@
 <v-list subheader>
-  <v-subheader>Recent Chats</v-subheader>
+    <v-toolbar dark color="success">
+        <v-toolbar-title>Recent Dialogs</v-toolbar-title>
+    </v-toolbar>
   <v-list-tile avatar v-for="(chat, index) in chats" v-bind:key="chat.statement" @click="" :to="/chat/ + index">
     <v-list-tile-content>
       <v-list-tile-title v-html="chat.statement"></v-list-tile-title>
