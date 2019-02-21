@@ -1,5 +1,3 @@
-//TODO switch messages contents between chats
-//TODO enable sending a message
 //TODO add scroll functionality
 //TODO add emoji functionality
 
@@ -11,16 +9,16 @@ export default {
     return {
       content: "",
       chatMessages: [],
-      chatStatement:"",
+      chatStatement: "",
       emojiPanel: false,
       currentRef: {},
       loading: false,
-      totalChatHeight: 0,
+      totalChatHeight: 0
     };
   },
   props: ["id"],
-  created(){
-    this.$store.dispatch('loadChats');
+  created() {
+    this.$store.dispatch("loadChats");
   },
   mounted() {
     this.loadChat();
@@ -31,8 +29,8 @@ export default {
     chats: Chats
   },
   computed: {
-    chats () {
-      return this.$store.getters.chats
+    chats() {
+      return this.$store.getters.chats;
     },
     messages() {
       return this.chatMessages;
@@ -55,6 +53,25 @@ export default {
     loadChat() {
       this.chatMessages = this.chats[this.id].messages;
       this.chatStatement = this.chats[this.id].statement;
+      this.scrollToEnd();
+    },
+    sendMessage() {
+      if (this.content !== "") {
+        this.$store.dispatch("sendMessage", {
+          username: this.username,
+          content: this.content,
+          date: new Date().toString(),
+          chatID: this.id
+        });
+        this.content = "";
+        this.scrollToEnd();
+      }
+    },
+    scrollToEnd () {
+      this.$nextTick(() => {
+        var container = this.$el.querySelector('.chat-container')
+        container.scrollTop = container.scrollHeight
+      })
     },
   }
 };

@@ -1,5 +1,3 @@
-import * as firebase from "firebase";
-
 const ChatModule = {
   state: {
     chats: []
@@ -8,8 +6,10 @@ const ChatModule = {
     setMessagesEmpty(state) {
       state.messages = [];
     },
+    setChat(state,payload){
+      state.chats[payload.id].messages.push(payload.message);
+    },
     setChats(state, payload) {
-      console.log(payload);
       state.chats = payload;
     }
   },
@@ -21,6 +21,7 @@ const ChatModule = {
         content: payload.content,
         date: payload.date
       };
+      commit("setChat",{id:chatID,message:message});
     },
     loadChats({ commit }) {
         commit("setChats", [
@@ -56,12 +57,6 @@ const ChatModule = {
             }
           ]
         );
-    },
-    createChat({ commit }, payload) {
-      //do something with firestore
-      return new Promise((resolve, reject) => {
-        resolve(newPostKey);
-      });
     }
   },
   getters: {
