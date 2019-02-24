@@ -1,3 +1,7 @@
+# OpeAPI 3.0 Code Generation
+
+Using openapi-generator-cli using the graphql-nodejs-express generator
+
 # dpt-client
 
 ## Project setup
