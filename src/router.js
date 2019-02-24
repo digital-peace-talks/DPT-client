@@ -4,6 +4,7 @@ import SignIn from './components/SignIn/SignIn.vue';
 import SignUp from './components/SignUp/SignUp.vue';
 import Chats from './components/Chat/Chats/Chats.vue';
 import Chat from './components/Chat/Chat.vue';
+import Crisis from './components/Crisis/Crisis.vue';
 
 export default new Router({
   routes: [{
@@ -30,6 +31,12 @@ export default new Router({
              path: '/chat/:id',
              name: 'Chat',
              component: Chat,
+             props: true,
+           },
+           {
+             path: '/crisis',
+             name: 'Crisis',
+             component: Crisis,
              props: true,
            }
           ],
