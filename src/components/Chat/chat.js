@@ -9,11 +9,7 @@ export default {
     return {
       content: "",
       chatMessages: [],
-      chatStatement: "",
-      emojiPanel: false,
-      currentRef: {},
-      loading: false,
-      totalChatHeight: 0
+      chatStatement: ""
     };
   },
   props: ["id"],
@@ -67,11 +63,11 @@ export default {
         this.scrollToEnd();
       }
     },
-    scrollToEnd () {
+    scrollToEnd() {
       this.$nextTick(() => {
-        var container = this.$el.querySelector('.chat-container')
-        container.scrollTop = container.scrollHeight
-      })
-    },
+        var container = this.$el.querySelector(".chat-container");
+        container.scrollTop = container.scrollHeight;
+      });
+    }
   }
 };
