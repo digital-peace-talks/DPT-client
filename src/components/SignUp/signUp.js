@@ -1,62 +1,62 @@
 import bip39 from "bip39";
-import ReCAPTCHA from '../ReCAPTCHA/ReCAPTCHA.vue';
+import ReCAPTCHA from "../ReCAPTCHA/ReCAPTCHA.vue";
 import AuthMixin from "../../mixins/auth.mixin";
 
 export default {
-    name: "signup",
-    components: {
-        'ReCAPTCHA': ReCAPTCHA,
+  name: "signup",
+  components: {
+    ReCAPTCHA: ReCAPTCHA
+  },
+  data: function() {
+    return {
+      /**
+       * @type string
+       */
+      mnemonic: bip39.generateMnemonic(),
+      showCopiedMessage: false,
+      shouldRememberMnemonic: false
+    };
+  },
+  mixins: [AuthMixin],
+  methods: {
+    /**
+     * Executes sign up
+     */
+    signUpSubmitted() {
+      if (this.shouldRememberMnemonic) {
+        this.saveMnemonic(this.mnemonic);
+      }
+      this.$refs.recaptcha.execute();
     },
-    data: function () {
-        return {
-            /**
-             * @type string
-             */
-            mnemonic: bip39.generateMnemonic(),
-            showCopiedMessage: false,
-            shouldRememberMnemonic: false,
-        };
+    recaptchaCallback(recaptchaToken) {
+      if (recaptchaToken != null) {
+        this.signUp(recaptchaToken).then(() => this.$router.push("/signin"));
+      }
     },
-    mixins: [AuthMixin],
-    methods: {
-        /**
-         * Executes sign up
-         */
-        signUpSubmitted() {
-            if (this.shouldRememberMnemonic) {
-                this.saveMnemonic(this.mnemonic);
-            }
-            this.$refs.recaptcha.execute();
-        },
-        recaptchaCallback(recaptchaToken) {
-            if (recaptchaToken != null) {
-                this.signUp(recaptchaToken).then(() => this.$router.push("/signin"));
-            }
-        },
-        /**
-         * Downloads a file
-         * @param {string} filename the designated filename (e.g. key.txt)
-         * @param {string} text the content of the file
-         */
-        download(filename, text) {
-            var element = document.createElement("a");
-            element.setAttribute(
-                "href",
-                "data:text/plain;charset=utf-8," + encodeURIComponent(text)
-            );
-            element.setAttribute("download", filename);
+    /**
+     * Downloads a file
+     * @param {string} filename the designated filename (e.g. key.txt)
+     * @param {string} text the content of the file
+     */
+    download(filename, text) {
+      var element = document.createElement("a");
+      element.setAttribute(
+        "href",
+        "data:text/plain;charset=utf-8," + encodeURIComponent(text)
+      );
+      element.setAttribute("download", filename);
 
-            element.style.display = "none";
-            document.body.appendChild(element);
+      element.style.display = "none";
+      document.body.appendChild(element);
 
-            element.click();
+      element.click();
 
-            document.body.removeChild(element);
-        },
-        copyToClipboard() {
-            document.querySelector("#mnemonic").select();
-            document.execCommand("copy");
-            this.showCopiedMessage = true;
-        }
+      document.body.removeChild(element);
+    },
+    copyToClipboard() {
+      document.querySelector("#mnemonic").select();
+      document.execCommand("copy");
+      this.showCopiedMessage = true;
     }
+  }
 };

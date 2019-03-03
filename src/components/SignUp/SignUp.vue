@@ -1,2 +1,3 @@
 <template src="./signUp.html" />
-<script src="./signUp.js"></script>
+<script src="./signUp.js">
+</script>

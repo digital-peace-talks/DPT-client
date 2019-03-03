@@ -1,14 +1,14 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
 
 //import AuthModule from './AuthModule'
-import ChatModule from './ChatModule'
+import ChatModule from "./ChatModule";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   modules: {
- //   auth: AuthModule,
+    //   auth: AuthModule,
     chat: ChatModule
   },
   state: {
@@ -17,35 +17,34 @@ export const store = new Vuex.Store({
     onlineUsers: []
   },
   mutations: {
-    setLoading (state, payload) {
-      state.loading = payload
+    setLoading(state, payload) {
+      state.loading = payload;
     },
-    setError (state, payload) {
-      state.error = payload
+    setError(state, payload) {
+      state.error = payload;
     },
-    clearError (state) {
-      state.error = null
+    clearError(state) {
+      state.error = null;
     },
-    setOnlineUsers (state, payload) {
-      state.onlineUsers = payload
+    setOnlineUsers(state, payload) {
+      state.onlineUsers = payload;
     }
   },
   actions: {
-    loadOnlineUsers ({commit}) {
-    },
-    clearError ({commit}) {
-      commit('clearError')
+    loadOnlineUsers({ commit }) {},
+    clearError({ commit }) {
+      commit("clearError");
     }
   },
   getters: {
-    loading (state) {
-      return state.loading
+    loading(state) {
+      return state.loading;
     },
-    error (state) {
-      return state.error
+    error(state) {
+      return state.error;
     },
-    onlineUsers (state) {
-      return state.onlineUsers
+    onlineUsers(state) {
+      return state.onlineUsers;
     }
   }
-})
+});
