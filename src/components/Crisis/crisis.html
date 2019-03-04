@@ -1,17 +1,53 @@
-<v-container>
-  <v-layout column mt-5>
-    <p>please provide a reason for triggering crisis mode</p>
-    <v-snackbar ></v-snackbar>
-    <v-form  ref="form" lazy-validation>
-      <v-textarea outline></v-textarea>
-      <p>please propose a time limit for the crisis</p>
-      <v-layout column align-center>
-        <v-flex xs12 sm12 md12>
-          <v-btn class="px-5 my-5" color="primary" type="submit">
-            Apply
-          </v-btn>
-        </v-flex>
-      </v-layout>
-    </v-form>
-  </v-layout>
-</v-container>
+    <v-dialog v-model="show" persistent max-width="600px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">User Profile</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12 sm6 md4>
+                <v-text-field label="Legal first name*" required></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6 md4>
+                <v-text-field label="Legal middle name" hint="example of helper text only on focus"></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6 md4>
+                <v-text-field
+                  label="Legal last name*"
+                  hint="example of persistent helper text"
+                  persistent-hint
+                  required
+                ></v-text-field>
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field label="Email*" required></v-text-field>
+              </v-flex>
+              <v-flex xs12>
+                <v-text-field label="Password*" type="password" required></v-text-field>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-select
+                  :items="['0-17', '18-29', '30-54', '54+']"
+                  label="Age*"
+                  required
+                ></v-select>
+              </v-flex>
+              <v-flex xs12 sm6>
+                <v-autocomplete
+                  :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
+                  label="Interests"
+                  multiple
+                ></v-autocomplete>
+              </v-flex>
+            </v-layout>
+          </v-container>
+          <small>*indicates required field</small>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click="show = false">Close</v-btn>
+          <v-btn color="blue darken-1" flat @click="show = false">Save</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>

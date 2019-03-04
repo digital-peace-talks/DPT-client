@@ -1,0 +1,41 @@
+    <v-dialog v-model="show" persistent max-width="600px">
+      <v-card>
+          <v-toolbar dark color="success">
+              <v-toolbar-title>Success</v-toolbar-title>
+          </v-toolbar>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12>
+                <h2>Please edit your current statement on</h2>
+                <h1>How to achieve world peace?</h1>
+              </v-flex>
+              <v-flex xs12>
+                <v-textarea outline
+                  value="statement"
+                  hint="example of persistent helper text"
+                  persistent-hint
+                  required
+                ></v-textarea>
+              </v-flex>
+              <v-flex xs12>
+                  <h1>Any last words to Bob?</h1>
+              </v-flex>
+              <v-flex xs12>
+                  <v-textarea outline
+                      value="statement"
+                      hint="example of persistent helper text"
+                      persistent-hint
+                      required
+                  ></v-textarea>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click="show = false">Cancel</v-btn>
+          <v-btn color="blue darken-1" flat @click="show = false">Finish</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
