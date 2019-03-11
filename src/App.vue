@@ -1,9 +1,9 @@
 <template>
-  <v-app>
-    <v-content>
-      <router-view/>
-    </v-content>
-  </v-app>
+  <VApp>
+    <VContent>
+      <RouterView />
+    </VContent>
+  </VApp>
 </template>
 
 <script>

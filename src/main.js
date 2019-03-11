@@ -5,13 +5,17 @@ import VueRouter from 'vue-router';
 import Vuetify from 'vuetify';
 import App from './App.vue';
 import router from './router';
+import {store} from './Store';
 
 
 Vue.config.productionTip = false;
 Vue.use (Vuetify);
 Vue.use (VueRouter);
+window.app = new Vue();
 
 new Vue({
-    render: h => h(App),
-    router
+  created () {},
+  render: h => h(App),
+  router,
+  store
 }).$mount('#app');
