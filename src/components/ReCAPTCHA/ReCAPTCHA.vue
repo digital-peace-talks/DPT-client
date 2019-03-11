@@ -1,2 +1,3 @@
 <template src="./reCAPTCHA.html" />
-<script src="./reCAPTCHA.js"></script>
+<script src="./reCAPTCHA.js">
+</script>

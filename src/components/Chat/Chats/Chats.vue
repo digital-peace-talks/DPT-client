@@ -1,3 +1,14 @@
 <template src="./chats.html" />
-<script src="./chats.js"></script>
-<style src="./chats.css"></script>
+<script src="./chats.js">
+</script>
+<style src="./chats.css">
+
+
+
+
+
+
+
+
+
+</script>

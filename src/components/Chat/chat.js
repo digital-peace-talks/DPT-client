@@ -3,10 +3,14 @@
 
 import Message from "./Message/Message.vue";
 import Chats from "./Chats/Chats.vue";
+import Crisis from "../Crisis/Crisis.vue";
+import Success from "../Success/Success.vue";
 
 export default {
   data() {
     return {
+      showCrisisDialog: false,
+      showSuccessDialog: false,
       content: "",
       chatMessages: [],
       chatStatement: ""
@@ -22,7 +26,9 @@ export default {
   },
   components: {
     message: Message,
-    chats: Chats
+    chats: Chats,
+    crisis: Crisis,
+    success: Success
   },
   computed: {
     chats() {

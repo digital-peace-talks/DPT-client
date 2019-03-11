@@ -1,0 +1,66 @@
+<v-dialog v-model="show" persistent max-width="800px">
+  <v-card>
+    <v-toolbar dense dark color="error lighten-1">
+      <v-toolbar-title>Crisis</v-toolbar-title>
+    </v-toolbar>
+    <v-card-text>
+      <v-container grid-list-md>
+        <v-layout wrap>
+          <v-flex xs12>
+            <span>Please provide a reason why you triggered Crisis mode</span>
+          </v-flex>
+          <v-flex xs12>
+            <v-textarea
+              solo
+              auto-grow
+              rows="2"
+              value=""
+              placeholder="I think the last statement was outragous"
+              hint="example of persistent helper text"
+              persistent-hint
+              required
+            ></v-textarea>
+          </v-flex>
+          <v-flex xs12>
+              <p>
+                  <h4>Please propose a time limit for the crisis</h4>
+              <br>
+              </p>
+          </v-flex>
+          <v-flex xs12>
+            <v-slider
+              :tick-labels="time_ranges"
+              v-model="time"
+              :min="1"
+              :max="29"
+              thumb-label
+              thumb-size="50"
+              ticks="always"
+              tick-size="0"
+            >
+              <template v-slot:thumb-label="props">
+                <span>
+                  {{time_range(props.value)}}
+                </span>
+              </template>
+            </v-slider>
+          </v-flex>
+          <v-flex xs12>
+            <h4>Or choose a final date</h4>
+          </v-flex>
+          <v-flex xs7>
+            <v-date-picker landscape> </v-date-picker>
+          </v-flex>
+          <!-- <v-flex xs4> -->
+          <!-- <v-time-picker></v-time-picker> -->
+          <!-- </v-flex> -->
+        </v-layout>
+      </v-container>
+    </v-card-text>
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn color="blue darken-1" flat @click="show = false">Cancel</v-btn>
+      <v-btn color="blue darken-1" flat @click="show = false">Finish</v-btn>
+    </v-card-actions>
+  </v-card>
+</v-dialog>
