@@ -1,32 +1,47 @@
-<v-layout row >
-            <v-flex xs12 sm10 order-xs2 style="position: relative;">
-                <v-toolbar flat dark color="primary">
-                    <v-layout row>
-                    <v-toolbar-title>{{statement}}</v-toolbar-title>
-                    </v-layout>
-                    <v-layout row>
-                    <v-btn color="error" dark @click.stop="showCrisisDialog=true">Crisis Mode</v-btn>
-                    <crisis v-model="showCrisisDialog"></crisis>
-                    <v-btn color="success" dark @click.stop="showSuccessDialog=true">Success</v-btn>
-                    <success v-model="showSuccessDialog"></success>
-                    </v-layout>
-                </v-toolbar>
-                <v-spacer></v-spacer>
-                <div class="chat-container" ref="chatContainer" >
-                    <message :messages="messages"></message>
-                </div>
-                <v-layout row>
-                    <div class="typer">
-                        <input type="text" placeholder="Type here..." v-on:keyup.enter="sendMessage" v-model="content">
-                    </div>
-                    <v-flex x1 class="pt-3">
-                    <v-btn xs4 md1 color="primary" flat dark @click.stop="sendMessage">
-                        <v-icon>send</v-icon>
-                    </v-btn>
-                    </v-flex>
-                </v-layout>
-            </v-flex>
-            <v-flex sm3 order-xs1 class="scrollable">
-                <chats></chats>
-            </v-flex>
+<v-layout row>
+  <v-flex xs12 sm10 order-xs2 style="position: relative;">
+    <v-toolbar flat dark color="primary">
+      <v-layout row>
+        <v-toolbar-title>{{statement}}</v-toolbar-title>
+      </v-layout>
+      <v-layout row>
+        <v-btn color="error" dark @click.stop="showCrisisDialog=true"
+          >Crisis Mode</v-btn
+        >
+        <crisis
+          :showDialog="showCrisisDialog"
+          @showCrisisDialogChange="handleShowCrisisDialogChanged"
+        ></crisis>
+        <v-btn color="success" dark @click.stop="showSuccessDialog=true"
+          >Success</v-btn
+        >
+        <success
+          :showDialog="showSuccessDialog"
+          @showSuccessDialogChange="handleShowSuccessDialogChanged"
+        ></success>
+      </v-layout>
+    </v-toolbar>
+    <v-spacer></v-spacer>
+    <div class="chat-container" ref="chatContainer">
+      <message :messages="messages"></message>
+    </div>
+    <v-layout row>
+      <div class="typer">
+        <input
+          type="text"
+          placeholder="Type here..."
+          v-on:keyup.enter="sendMessage"
+          v-model="content"
+        />
+      </div>
+      <v-flex x1 class="pt-3">
+        <v-btn xs4 md1 color="primary" flat dark @click.stop="sendMessage">
+          <v-icon>send</v-icon>
+        </v-btn>
+      </v-flex>
+    </v-layout>
+  </v-flex>
+  <v-flex sm3 order-xs1 class="scrollable">
+    <chats></chats>
+  </v-flex>
 </v-layout>

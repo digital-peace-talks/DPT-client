@@ -37,15 +37,15 @@ export default {
     ]
   }),
   props: {
-    value: Boolean
+    showDialog: Boolean
   },
   computed: {
     show: {
       get() {
-        return this.value;
+        return this.showDialog;
       },
       set(value) {
-        this.$emit("input", value);
+        this.$emit("showCrisisDialogChange", value);
       }
     }
   },

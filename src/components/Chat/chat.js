@@ -74,6 +74,12 @@ export default {
         var container = this.$el.querySelector(".chat-container");
         container.scrollTop = container.scrollHeight;
       });
+    },
+    handleShowCrisisDialogChanged(value) {
+      this.showCrisisDialog = value;
+    },
+    handleShowSuccessDialogChanged(value) {
+      this.showSuccessDialog = value;
     }
   }
 };

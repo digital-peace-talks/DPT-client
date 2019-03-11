@@ -1,7 +1,7 @@
 export default {
   props: {
-    value: Boolean,
-    id: "$route.params.id"
+    id: "$route.params.id",
+    showDialog: Boolean
   },
   computed: {
     statement() {
@@ -9,10 +9,10 @@ export default {
     },
     show: {
       get() {
-        return this.value;
+        return this.showDialog;
       },
       set(value) {
-        this.$emit("input", value);
+        this.$emit("showSuccessDialogChange", value);
       }
     }
   }
