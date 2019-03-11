@@ -1,14 +1,14 @@
 <v-dialog v-model="show" max-width="600px">
     <v-card>
-        <v-toolbar dense dark color="success">
+        <v-toolbar dense dark color="success lighten-1">
             <v-toolbar-title>Success</v-toolbar-title>
         </v-toolbar>
         <v-card-text>
             <v-container grid-list-md>
                 <v-layout wrap>
                     <v-flex xs12>
-                        <h3>Please edit your current statement on</h3>
-                        <h2>{{statement}}</h2>
+                        <span>Please edit your current statement on:</span>
+                        <h2 class="grey--text">"{{statement}}"</h2>
                     </v-flex>
                     <v-flex xs12>
                         <v-textarea solo auto-grow
@@ -20,7 +20,7 @@
                         ></v-textarea>
                     </v-flex>
                     <v-flex xs12>
-                        <h3>Any last words to Bob?</h3>
+                        <span>Any last words to Bob?</span>
                     </v-flex>
                     <v-flex xs12>
                         <v-textarea solo auto-grow
