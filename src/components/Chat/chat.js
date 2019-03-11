@@ -47,7 +47,7 @@ export default {
     // TODO: Turn chat strings that show links into active links
   },
   watch: {
-    "$route.params.id"(newId, oldId) {
+    "$route.params.id"() {
       this.loadChat();
     }
   },

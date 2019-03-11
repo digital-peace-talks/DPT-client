@@ -31,7 +31,7 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
-    loadOnlineUsers({ commit }) {},
+    loadOnlineUsers() {},
     clearError({ commit }) {
       commit("clearError");
     }

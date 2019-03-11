@@ -2,13 +2,4 @@
 <script src="./chats.js">
 </script>
 <style src="./chats.css">
-
-
-
-
-
-
-
-
-
-</script>
+</style>
