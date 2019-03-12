@@ -53,11 +53,7 @@ export default {
   },
   methods: {
     time_range(val) {
-      if (val > 23) {
-        return val - 23 + " days";
-      } else {
-        return val + " hours";
-      }
+      return val > 23 ? val - 23 : val;
     }
   }
 };

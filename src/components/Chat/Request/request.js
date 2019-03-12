@@ -1,19 +1,16 @@
 export default {
   props: {
-    value: Boolean,
+    showDialog: Boolean,
     index: Number,
-    id: "$route.params.id"
+    statement: String
   },
   computed: {
-    statement() {
-      return this.$store.getters.chats[this.$route.params.id].statement;
-    },
     show: {
       get() {
-        return this.value;
+        return this.showDialog;
       },
       set(value) {
-        this.$emit("input", value);
+        this.$emit("showDialogChange", value);
       }
     }
   }

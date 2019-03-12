@@ -20,7 +20,6 @@
               auto-grow
               rows="2"
               :value="statement"
-              hint="example of persistent helper text"
               persistent-hint
               required
             ></v-textarea>
@@ -33,7 +32,7 @@
       <v-btn color="blue darken-2" flat @click="show = false">Dismiss</v-btn>
       <!-- close dialog and redirect to chat-->
       <v-btn
-        to="/chat/ + index"
+        :to="'/chat/' + index"
         color="blue darken-2"
         flat
         @click="show = false"
