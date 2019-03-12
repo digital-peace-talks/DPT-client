@@ -9,7 +9,6 @@ import Success from "../Success/Success.vue";
 export default {
   data() {
     return {
-      showCrisisDialog: false,
       showSuccessDialog: false,
       content: "",
       chatMessages: [],
@@ -74,9 +73,6 @@ export default {
         var container = this.$el.querySelector(".chat-container");
         container.scrollTop = container.scrollHeight;
       });
-    },
-    handleShowCrisisDialogChanged(value) {
-      this.showCrisisDialog = value;
     },
     handleShowSuccessDialogChanged(value) {
       this.showSuccessDialog = value;

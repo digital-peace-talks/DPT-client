@@ -1,4 +1,12 @@
-<v-dialog v-model="show" persistent max-width="800px" xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
+<v-dialog
+  v-model="show"
+  persistent
+  max-width="800px"
+  xmlns:v-slot="http://www.w3.org/1999/XSL/Transform"
+>
+  <template v-slot:activator="{ on }">
+    <v-btn color="error" dark v-on="on">Crisis mode</v-btn>
+  </template>
   <v-card>
     <v-toolbar dense dark color="error lighten-1">
       <v-toolbar-title>Crisis</v-toolbar-title>
@@ -22,7 +30,7 @@
           </v-flex>
           <v-flex xs12>
             <h4>Please propose a time limit for the crisis</h4>
-            <br>
+            <br />
           </v-flex>
           <v-flex xs12>
             <v-slider

@@ -4,15 +4,9 @@
       <v-layout row>
         <v-toolbar-title>{{statement}}</v-toolbar-title>
       </v-layout>
-      <v-spacer/>
+      <v-spacer />
       <v-layout row justify-end>
-        <v-btn color="error" class="mx-3" block @click.stop="showCrisisDialog=true"
-          >Crisis Mode</v-btn
-        >
-        <crisis
-          :showDialog="showCrisisDialog"
-          @showCrisisDialogChange="handleShowCrisisDialogChanged"
-        ></crisis>
+        <crisis></crisis>
         <v-btn color="success" block @click.stop="showSuccessDialog=true"
           >Success</v-btn
         >
