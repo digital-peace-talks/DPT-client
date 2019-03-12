@@ -1,0 +1,44 @@
+<v-dialog v-model="show" max-width="600px">
+  <v-card>
+    <v-toolbar dense dark color="primary lighten-1">
+      <v-toolbar-title>Request Dialog</v-toolbar-title>
+    </v-toolbar>
+    <v-card-text>
+      <v-container grid-list-md>
+        <v-layout wrap>
+          <v-flex xs12>
+            <h2 class="grey--text">"{{statement}}"</h2>
+            <span
+              >Please type here how exactly would you like to change this
+              statement and why, and please be clear and kind so this statement
+              author would find you request inviting.</span
+            >
+          </v-flex>
+          <v-flex xs12>
+            <v-textarea
+              solo
+              auto-grow
+              rows="2"
+              :value="statement"
+              hint="example of persistent helper text"
+              persistent-hint
+              required
+            ></v-textarea>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-card-text>
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn color="blue darken-2" flat @click="show = false">Dismiss</v-btn>
+      <!-- close dialog and redirect to chat-->
+      <v-btn
+        to="/chat/ + index"
+        color="blue darken-2"
+        flat
+        @click="show = false"
+        >Apply</v-btn
+      >
+    </v-card-actions>
+  </v-card>
+</v-dialog>
