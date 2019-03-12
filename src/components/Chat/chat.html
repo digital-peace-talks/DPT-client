@@ -4,15 +4,16 @@
       <v-layout row>
         <v-toolbar-title>{{statement}}</v-toolbar-title>
       </v-layout>
-      <v-layout row>
-        <v-btn color="error" dark @click.stop="showCrisisDialog=true"
+      <v-spacer/>
+      <v-layout row justify-end>
+        <v-btn color="error" class="mx-3" block @click.stop="showCrisisDialog=true"
           >Crisis Mode</v-btn
         >
         <crisis
           :showDialog="showCrisisDialog"
           @showCrisisDialogChange="handleShowCrisisDialogChanged"
         ></crisis>
-        <v-btn color="success" dark @click.stop="showSuccessDialog=true"
+        <v-btn color="success" block @click.stop="showSuccessDialog=true"
           >Success</v-btn
         >
         <success
@@ -25,17 +26,17 @@
     <div class="chat-container" ref="chatContainer">
       <message :messages="messages"></message>
     </div>
-    <v-layout row>
-      <div class="typer">
+    <v-layout row class="shadow-up">
+      <div class="typer white">
         <input
           type="text"
           placeholder="Type here..."
-          v-on:keyup.enter="sendMessage"
+          @keyup.enter="sendMessage"
           v-model="content"
         />
       </div>
-      <v-flex x1 class="pt-3">
-        <v-btn xs4 md1 color="primary" flat dark @click.stop="sendMessage">
+      <v-flex x1 class="pt-3 white">
+        <v-btn color="primary" flat icon right @click.stop="sendMessage">
           <v-icon>send</v-icon>
         </v-btn>
       </v-flex>
