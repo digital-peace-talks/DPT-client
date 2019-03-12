@@ -3,9 +3,6 @@ const ChatModule = {
     chats: []
   },
   mutations: {
-    setMessagesEmpty(state) {
-      state.messages = [];
-    },
     setChat(state, payload) {
       state.chats[payload.id].messages.push(payload.message);
     },
@@ -59,9 +56,6 @@ const ChatModule = {
     }
   },
   getters: {
-    messages(state) {
-      return state.messages;
-    },
     chats(state) {
       return state.chats;
     }

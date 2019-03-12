@@ -22,10 +22,8 @@
             ></v-textarea>
           </v-flex>
           <v-flex xs12>
-              <p>
-                  <h4>Please propose a time limit for the crisis</h4>
-              <br>
-              </p>
+            <h4>Please propose a time limit for the crisis</h4>
+            <br>
           </v-flex>
           <v-flex xs12>
             <v-slider
@@ -48,8 +46,8 @@
           <v-flex xs12>
             <h4>Or choose a final date</h4>
           </v-flex>
-          <v-flex xs7>
-            <v-date-picker landscape> </v-date-picker>
+          <v-flex xs12>
+            <v-date-picker v-model="selectedDate"></v-date-picker>
           </v-flex>
           <!-- <v-flex xs4> -->
           <!-- <v-time-picker></v-time-picker> -->
