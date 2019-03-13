@@ -24,6 +24,12 @@ export default {
         .slice(-1)[0].content;
     }
   },
+  methods: {
+    handleCrisisAdvance() {
+      this.show = false;
+      this.state = 2;
+    }
+  },
   props: {
     on: Object,
     state: Number

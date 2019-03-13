@@ -39,6 +39,7 @@ export default {
       ""
     ],
     selectedDate: "",
+    crisisStatus: 0,
     crisisENUM: Object.freeze({
       NOT_STARTED: 0,
       PENDING: 1,
@@ -49,19 +50,9 @@ export default {
   }),
   props: {
     reason: String,
-    initialStatus: Number,
     chatID: String
   },
-  computed: {
-    crisisStatus: {
-      get() {
-        return this.initialStatus;
-      },
-      set(value) {
-        this.$emit("crisisStatusChange", this.crisisENUM[value]);
-      }
-    }
-  },
+  computed: {},
   components: {
     crisisControls: CrisisControls,
     crisisNotice: CrisisNotice
