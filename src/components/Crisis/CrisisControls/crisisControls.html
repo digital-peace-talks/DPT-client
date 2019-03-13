@@ -3,4 +3,51 @@
   <v-btn color="error" dark v-if="state==1">Pending</v-btn>
   <v-switch v-on="on" v-if="state==2" label="Switch"></v-switch>
   <v-switch v-on="on" v-if="state==2" label="Switch"></v-switch>
+  <v-dialog
+    v-model="on"
+    v-if="state==1"
+    persistent
+    max-width="800px"
+    xmlns:v-slot="http://www.w3.org/1999/XSL/Transform"
+  >
+    <v-card>
+      <v-toolbar dense dark color="error lighten-1">
+        <v-toolbar-title>A Crisis has been called</v-toolbar-title>
+      </v-toolbar>
+      <v-card-text>
+        <v-container grid-list-md>
+          <v-layout wrap>
+            <v-flex xs12>
+              <p>Topic: <strong>{{statement}}</strong></p>
+              <p>Your last comment: <strong>{{lastComment}}</strong></p>
+            </v-flex>
+            <v-flex xs12>
+              <v-textarea
+                solo
+                auto-grow
+                rows="2"
+                value=""
+                placeholder="I think the last statement was outrageous"
+                persistent-hint
+                required
+              ></v-textarea>
+            </v-flex>
+            <v-flex xs12>
+              <h4>Please propose a time limit for the crisis</h4>
+              <br />
+            </v-flex>
+            <v-flex xs12>
+              <h4>Or choose a final date</h4>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="blue darken-1" flat @click="show = false">Cancel</v-btn>
+        <v-btn color="blue darken-1" flat @click="show = false">Finish</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  <h2 v-if="state==2">Time Left</h2>
 </v-layout>

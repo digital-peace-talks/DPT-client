@@ -1,4 +1,4 @@
-import { VSwitch } from "vuetify/lib";
+import { VDialog, VSwitch } from "vuetify/lib";
 
 export default {
   data() {
@@ -7,7 +7,19 @@ export default {
       solvedYou: true
     };
   },
-  components: { VSwitch },
+  components: { VDialog, VSwitch },
+  computed: {
+    statement() {
+      return this.$store.getters.chats[this.$route.params.id].statement;
+    },
+    lastComment() {
+      return this.$store.getters.chats[this.$route.params.id].messages
+        .filter(function(m) {
+          return m.user;
+        })
+        .slice(-1)[0].content;
+    }
+  },
   props: {
     on: Object,
     state: Number

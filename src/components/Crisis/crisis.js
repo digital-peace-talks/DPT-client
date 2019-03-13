@@ -1,4 +1,6 @@
 import CrisisControls from "./CrisisControls/CrisisControls.vue";
+import CrisisNotice from "./CrisisNotice/CrisisNotice.vue";
+
 export default {
   data: () => ({
     show: false,
@@ -47,11 +49,12 @@ export default {
   }),
   computed: {
     crisisStatus: function() {
-      return this.crisisENUM.NOT_STARTED;
+      return this.crisisENUM.PENDING;
     }
   },
   components: {
-    crisisControls: CrisisControls
+    crisisControls: CrisisControls,
+    crisisNotice: CrisisNotice
   },
   methods: {
     time_range(val) {
