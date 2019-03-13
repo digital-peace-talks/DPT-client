@@ -5,7 +5,7 @@
   xmlns:v-slot="http://www.w3.org/1999/XSL/Transform"
 >
   <template v-slot:activator="{ on }">
-    <v-btn color="error" dark v-on="on">Crisis mode</v-btn>
+    <crisisControls :on="on" :state="crisisStatus"></crisisControls>
   </template>
   <v-card>
     <v-toolbar dense dark color="error lighten-1">
