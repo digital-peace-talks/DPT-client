@@ -47,9 +47,19 @@ export default {
       FAILURE: 4
     })
   }),
+  props: {
+    reason: String,
+    initialStatus: Number,
+    chatID: String
+  },
   computed: {
-    crisisStatus: function() {
-      return this.crisisENUM.PENDING;
+    crisisStatus: {
+      get() {
+        return this.initialStatus;
+      },
+      set(value) {
+        this.$emit("crisisStatusChange", this.crisisENUM[value]);
+      }
     }
   },
   components: {
@@ -59,6 +69,21 @@ export default {
   methods: {
     time_range(val) {
       return val > 23 ? val - 23 : val;
+    },
+    handleCrisisStart() {
+      this.show = false;
+      this.startCrisis();
+    },
+    startCrisis() {
+      this.$store.dispatch("addCrisis", {
+        initiator: "Bob",
+        recipient: "Iwan",
+        reason: this.reason,
+        date: new Date().toString(),
+        chatID: this.$route.params.id
+      });
+      this.crisisStatus = this.crisisENUM.PENDING;
+      console.log(this.crisisStatus);
     }
   }
 };

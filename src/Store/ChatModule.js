@@ -3,6 +3,9 @@ const ChatModule = {
     chats: []
   },
   mutations: {
+    setCrisis(state, payload) {
+      state.chats[payload.id].crisises.push(payload.crisis);
+    },
     setChat(state, payload) {
       state.chats[payload.id].messages.push(payload.message);
     },
@@ -16,9 +19,20 @@ const ChatModule = {
       const message = {
         user: payload.username,
         content: payload.content,
-        date: payload.date
+        date: payload.date,
+        chatID: payload.chatID
       };
       commit("setChat", { id: chatID, message: message });
+    },
+    addCrisis({ commit }, payload) {
+      let chatID = payload.chatID;
+      const crisis = {
+        initiator: payload.initiator,
+        recipient: payload.recipient,
+        reason: payload.content,
+        date: payload.date
+      };
+      commit("setCrisis", { id: chatID, crisis: crisis });
     },
     loadChats({ commit }) {
       commit("setChats", [
@@ -35,6 +49,14 @@ const ChatModule = {
             { user: "bob", content: "the", date: "1.1.2019" },
             { user: "alice", content: "lazy", date: "1.1.2019" },
             { user: "bob", content: "dog", date: "1.1.2019" }
+          ],
+          crisises: [
+            {
+              initiator: "Bob",
+              recipent: "Iwan",
+              reason: "the sky is blue",
+              date: "1.1.2019"
+            }
           ]
         },
         {
@@ -50,6 +72,14 @@ const ChatModule = {
             { user: "alice", content: "the", date: "1.1.2019" },
             { user: "bob", content: "fearful", date: "1.1.2019" },
             { user: "alice", content: "elephant", date: "1.1.2019" }
+          ],
+          crisises: [
+            {
+              initiator: "Bob",
+              recipent: "Iwan",
+              reason: "the sky is blue",
+              date: "1.1.2019"
+            }
           ]
         }
       ]);

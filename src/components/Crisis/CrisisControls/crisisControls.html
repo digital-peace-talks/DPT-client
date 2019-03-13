@@ -1,5 +1,5 @@
 <v-layout>
-  <v-btn color="error" dark v-if="state==0">Crisis mode</v-btn>
+  <v-btn color="error" dark v-on="on" v-if="state==0">Crisis mode</v-btn>
   <v-btn color="error" dark v-if="state==1">Pending</v-btn>
   <v-switch v-on="on" v-if="state==2" label="Switch"></v-switch>
   <v-switch v-on="on" v-if="state==2" label="Switch"></v-switch>
@@ -20,6 +20,7 @@
             <v-flex xs12>
               <p>Topic: <strong>{{statement}}</strong></p>
               <p>Your last comment: <strong>{{lastComment}}</strong></p>
+              <p>Reason Given: <strong>{{reason}}</strong></p>
             </v-flex>
             <v-flex xs12>
               <v-textarea

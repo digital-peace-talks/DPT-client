@@ -20,6 +20,7 @@
           <v-flex xs12>
             <v-textarea
               solo
+              :reason="reason"
               auto-grow
               rows="2"
               value=""
@@ -65,7 +66,9 @@
     <v-card-actions>
       <v-spacer></v-spacer>
       <v-btn color="blue darken-1" flat @click="show = false">Cancel</v-btn>
-      <v-btn color="blue darken-1" flat @click="show = false">Finish</v-btn>
+      <v-btn color="blue darken-1" flat @click="handleCrisisStart"
+        >Finish</v-btn
+      >
     </v-card-actions>
   </v-card>
 </v-dialog>

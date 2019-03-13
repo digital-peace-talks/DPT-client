@@ -12,6 +12,10 @@ export default {
     statement() {
       return this.$store.getters.chats[this.$route.params.id].statement;
     },
+    reason() {
+      return this.$store.getters.chats[this.$route.params.id].crisises[0]
+        .reason;
+    },
     lastComment() {
       return this.$store.getters.chats[this.$route.params.id].messages
         .filter(function(m) {
