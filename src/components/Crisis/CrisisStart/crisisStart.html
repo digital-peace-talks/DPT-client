@@ -1,0 +1,78 @@
+<v-layout>
+  <v-dialog
+    v-model="show"
+    persistent
+    max-width="800px"
+    xmlns:v-slot="http://www.w3.org/1999/XSL/Transform"
+  >
+    <template v-slot:activator="{ on }">
+      <v-btn color="red lighten-2" block v-on="on">
+        Crisis
+      </v-btn>
+    </template>
+    <v-card>
+      <v-toolbar dense dark color="error lighten-1">
+        <v-toolbar-title>Crisis</v-toolbar-title>
+      </v-toolbar>
+      <v-card-text>
+        <v-container grid-list-md>
+          <v-layout wrap>
+            <v-flex xs12>
+              <span>Please provide a reason why you triggered Crisis mode</span>
+            </v-flex>
+            <v-flex xs12>
+              <v-textarea
+                solo
+                v-model="reason"
+                auto-grow
+                rows="2"
+                value=""
+                placeholder="I think the last statement was outrageous"
+                persistent-hint
+                required
+              ></v-textarea>
+            </v-flex>
+            <v-flex xs12>
+              <h4>How long do you want to try to solve the crisis?</h4>
+              <br />
+            </v-flex>
+            <v-flex xs12>
+              <v-slider
+                :tick-labels="time_ranges"
+                v-model="time"
+                :min="1"
+                :max="29"
+                thumb-label
+                thumb-size="50"
+                ticks="always"
+                tick-size="0"
+              >
+                <template v-slot:thumb-label="props">
+                  <span>
+                    {{time_range(props.value)}}
+                  </span>
+                </template>
+              </v-slider>
+            </v-flex>
+            <v-flex xs12>
+              <h4>Or choose a final date</h4>
+            </v-flex>
+            <v-flex xs12>
+              <v-date-picker v-model="selectedDate"></v-date-picker>
+            </v-flex>
+            <!-- <v-flex xs4> -->
+            <!-- <v-time-picker></v-time-picker> -->
+            <!-- </v-flex> -->
+          </v-layout>
+        </v-container>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="blue darken-1" flat @click="show = false">Cancel</v-btn>
+        <v-btn color="red darken-1" flat @click="handleCrisisStart"
+          >Start Crisis</v-btn
+        >
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</v-layout>

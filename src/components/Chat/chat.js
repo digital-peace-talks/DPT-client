@@ -41,16 +41,20 @@ export default {
     },
     username() {
       //TODO: username should be dynamic
-      return "Iwan"; //this.$store.getters.user.username
+      return "You"; //this.$store.getters.user.username
     }
     // TODO: Turn chat strings that show links into active links
   },
   watch: {
     "$route.params.id"() {
+      this.setCurrentChat();
       this.loadChat();
     }
   },
   methods: {
+    setCurrentChat() {
+      this.$store.dispatch("setCurrentChat", this.id);
+    },
     loadChat() {
       this.chatMessages = this.chats[this.id].messages;
       this.chatStatement = this.chats[this.id].statement;

@@ -1,44 +1,4 @@
 <v-layout>
-  <v-btn color="error" dark v-on="on" v-if="state==0">Crisis mode</v-btn>
-  <v-btn color="error" dark v-if="state==1">Pending</v-btn>
-  <v-btn color="error" dark v-if="state==2">Ongoing</v-btn>
-  <v-dialog
-    v-model="on"
-    v-if="state==1"
-    persistent
-    max-width="800px"
-    xmlns:v-slot="http://www.w3.org/1999/XSL/Transform"
-  >
-    <v-card>
-      <v-toolbar dense dark color="error lighten-1">
-        <v-toolbar-title>A Crisis has been called</v-toolbar-title>
-      </v-toolbar>
-      <v-card-text>
-        <v-container grid-list-md>
-          <v-layout wrap>
-            <v-flex xs12>
-              <p>Topic: <strong>{{statement}}</strong></p>
-              <p>Your last comment: <strong>{{lastComment}}</strong></p>
-              <p>Reason Given: <strong>{{reason}}</strong></p>
-            </v-flex>
-            <v-flex xs12> </v-flex>
-            <v-flex xs12>
-              <h4></h4>
-              <br />
-            </v-flex>
-            <v-flex xs12>
-              <h4></h4>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn color="blue darken-1" flat @click="show = false">Cancel</v-btn>
-        <v-btn color="blue darken-1" flat @click="handleCrisisAdvance"
-          >Finish</v-btn
-        >
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+  <v-switch v-model="solvedYou"></v-switch>
+  <v-switch v-model="solvedThem"></v-switch>
 </v-layout>

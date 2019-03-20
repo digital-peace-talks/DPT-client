@@ -1,80 +1,44 @@
 import CrisisControls from "./CrisisControls/CrisisControls.vue";
+import CrisisResolved from "./CrisisResolved/CrisisResolved.vue";
+import CrisisStart from "./CrisisStart/CrisisStart.vue";
 import CrisisNotice from "./CrisisNotice/CrisisNotice.vue";
+import { VChip } from "vuetify/lib";
 
 export default {
   data: () => ({
     show: false,
-    time: 1,
-    time_ranges: [
-      "hours",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "days",
-      "",
-      "",
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
-    selectedDate: "",
-    crisisStatus: 0,
     crisisENUM: Object.freeze({
       NOT_STARTED: 0,
       PENDING: 1,
       ONGOING: 2,
       RESOLVED: 3,
       FAILURE: 4
-    })
+    }),
+    crisisStatus: 0,
+    reason: ""
   }),
   props: {
-    reason: String,
     chatID: String
   },
-  computed: {},
   components: {
     crisisControls: CrisisControls,
-    crisisNotice: CrisisNotice
+    crisisStart: CrisisStart,
+    crisisResolved: CrisisResolved,
+    crisisNotice: CrisisNotice,
+    VChip
   },
   methods: {
-    time_range(val) {
-      return val > 23 ? val - 23 : val;
-    },
-    handleCrisisStart() {
-      this.show = false;
-      this.startCrisis();
-    },
-    startCrisis() {
+    handleCrisisStart(value) {
       this.$store.dispatch("addCrisis", {
-        initiator: "Bob",
-        recipient: "Iwan",
-        reason: this.reason,
+        initiator: "Iwan",
+        recipient: "Bob",
+        reason: value.reason,
+        due: value.due,
+        status: 1,
         date: new Date().toString(),
         chatID: this.$route.params.id
       });
-      this.crisisStatus = this.crisisENUM.PENDING;
-      console.log(this.crisisStatus);
+      this.crisisStatus = 1;
     }
   }
 };

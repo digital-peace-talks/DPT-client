@@ -1,15 +1,17 @@
-import { VDialog, VSwitch } from "vuetify/lib";
+import { VDialog } from "vuetify/lib";
 
 export default {
-  data() {
-    return {
-      solvedMe: true,
-      solvedYou: true
-    };
-  },
-  components: { VDialog, VSwitch },
+  components: { VDialog },
   props: {
-    on: Object,
-    state: Number
+    showDialog: Boolean,
+    reason: String
+  },
+  computed: {
+    show: {
+      get() {
+        return this.showDialog;
+      },
+      set(value) {}
+    }
   }
 };

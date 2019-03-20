@@ -1,2 +1,2 @@
-<template src="./crisisControls.html"></template>
+<template src="./crisisControls.html" />
 <script src="./crisisControls.js"></script>

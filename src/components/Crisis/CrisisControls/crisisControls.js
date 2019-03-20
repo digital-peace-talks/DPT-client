@@ -1,37 +1,17 @@
-import { VDialog, VSwitch } from "vuetify/lib";
+import { VSwitch } from "vuetify/lib";
 
 export default {
   data() {
     return {
-      solvedMe: true,
-      solvedYou: true
+      show: false,
+      solvedYou: false,
+      solvedThem: false
     };
-  },
-  components: { VDialog, VSwitch },
-  computed: {
-    statement() {
-      return this.$store.getters.chats[this.$route.params.id].statement;
-    },
-    reason() {
-      return this.$store.getters.chats[this.$route.params.id].crisises[0]
-        .reason;
-    },
-    lastComment() {
-      return this.$store.getters.chats[this.$route.params.id].messages
-        .filter(function(m) {
-          return m.user;
-        })
-        .slice(-1)[0].content;
-    }
-  },
-  methods: {
-    handleCrisisAdvance() {
-      this.show = false;
-      this.state = 2;
-    }
   },
   props: {
     on: Object,
-    state: Number
-  }
+    state: Number,
+    show: Boolean
+  },
+  components: { VSwitch }
 };
