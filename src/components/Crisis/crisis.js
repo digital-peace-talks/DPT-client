@@ -7,6 +7,9 @@ import { VChip } from "vuetify/lib";
 export default {
   data: () => ({
     show: false,
+    solvedThem: true,
+    solvedYou: false,
+    resolvedCounter: 1,
     crisisENUM: Object.freeze({
       NOT_STARTED: 0,
       PENDING: 1,
@@ -17,9 +20,6 @@ export default {
     crisisStatus: 0,
     reason: ""
   }),
-  props: {
-    chatID: String
-  },
   components: {
     crisisControls: CrisisControls,
     crisisStart: CrisisStart,
@@ -38,7 +38,21 @@ export default {
         date: new Date().toString(),
         chatID: this.$route.params.id
       });
-      this.crisisStatus = 1;
+      this.reason = value.reason;
+    },
+    handleAdvanceCrisis() {
+      this.crisisStatus += 1;
+    },
+    handleSolvedYouChange(value) {
+      this.solvedYou = value;
+      if (this.solvedYou && this.solvedThem) {
+        this.crisisStatus = this.crisisENUM.RESOLVED;
+        this.resolvedCounter += 1;
+        this.crisisStatus = this.crisisENUM.NOT_STARTED;
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 };

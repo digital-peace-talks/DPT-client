@@ -3,7 +3,7 @@ import * as db from "./db.json";
 const ChatModule = {
   state: {
     chats: [],
-    currentChat: { crisises: [{}] }
+    currentChat: { crisises: [{}], statement: "" }
   },
   mutations: {
     setCrisises(state, payload) {
@@ -12,6 +12,9 @@ const ChatModule = {
     setChat(state, payload) {
       state.chats[payload.id].messages.push(payload.message);
     },
+    //setCrisisStatus(state, payload) {
+    //  state.chats[payload.id].crisises.slive(-1).state=payload.;
+    //},
     setCurrentChat(state, id) {
       state.currentChat = this.chats[id];
     },

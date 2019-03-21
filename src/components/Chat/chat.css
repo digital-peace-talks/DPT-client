@@ -33,6 +33,12 @@
     padding: 10px;
     background-color: #f2f2f2;
   }
+  .quote-container{
+      box-sizing: border-box;
+      overflow-y: auto;
+      padding: 10px;
+      background-color: #f2f2f2;
+  }
   .message{
     margin-bottom: 3px;
   }
@@ -46,6 +52,10 @@
     font-size: 18px;
     font-weight: bold;
   }
+  .quote-container .username{
+      font-size: 18px;
+      font-weight: bold;
+  }
   .chat-container .content{
     padding: 8px;
     background-color: lightgreen;
@@ -55,8 +65,20 @@
     max-width: 50%;
     word-wrap: break-word;
     }
+  .quote-container .content{
+      padding: 8px;
+      background-color: lightgreen;
+      border-radius: 10px;
+      display:inline-block;
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12);
+      max-width: 50%;
+      word-wrap: break-word;
+  }
   @media (max-width: 480px) {
     .chat-container .content{
       max-width: 60%;
+    }
+    .quote-container .content{
+        max-width: 60%;
     }
   }

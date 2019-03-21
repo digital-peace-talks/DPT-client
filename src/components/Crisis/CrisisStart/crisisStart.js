@@ -68,6 +68,7 @@ export default {
         reason: this.reason,
         due: this.time
       });
+      this.$emit("advanceCrisis");
     }
   }
 };

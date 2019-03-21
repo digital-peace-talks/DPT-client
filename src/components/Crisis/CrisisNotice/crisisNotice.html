@@ -13,8 +13,38 @@
         <v-layout wrap>
           <v-flex xs12>
             <p>Topic: <strong>{{statement}}</strong></p>
-            <p>Your last comment: <strong>{{lastComment}}</strong></p>
-            <p>Reason Given: <strong>{{reason}}</strong></p>
+            <h4>
+              Message in controversy:
+            </h4>
+            <div class="quote-container" ref="chatContainer">
+              <message :messages="message"></message>
+            </div>
+            <h4>Reason Given:</h4>
+            <blockquote class="blockquote grey lighten-5">
+              {{reason}}
+            </blockquote>
+            <p>
+              Why do you think the other party is hurt?
+              <v-btn-toggle>
+                <v-btn color="blue darken-1" flat @click="percievedReason='1'"
+                  >I overdid it</v-btn
+                >
+                <v-btn color="blue darken-1" flat @click="percievedReason='2'"
+                  >I was misunderstood</v-btn
+                >
+              </v-btn-toggle>
+            </p>
+            <p>
+              Proposed time limit: <strong>{{due}}</strong>
+              <v-btn-toggle>
+                <v-btn color="blue darken-1" flat @click="percievedTime='short'"
+                  >I need more time</v-btn
+                >
+                <v-btn color="blue darken-1" flat @click="percievedTime='long'"
+                  >The time is okay</v-btn
+                >
+              </v-btn-toggle>
+            </p>
           </v-flex>
           <v-flex xs12> </v-flex>
           <v-flex xs12>
@@ -29,10 +59,7 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="blue darken-1" flat @click="show = false">Cancel</v-btn>
-      <v-btn color="blue darken-1" flat @click="handleCrisisAdvance"
-        >Finish</v-btn
-      >
+      <v-btn color="blue darken-1" flat @click="advanceCrisis">Approve</v-btn>
     </v-card-actions>
   </v-card>
 </v-dialog>

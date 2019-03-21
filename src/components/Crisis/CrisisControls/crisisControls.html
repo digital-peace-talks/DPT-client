@@ -1,4 +1,4 @@
 <v-layout>
-  <v-switch v-model="solvedYou"></v-switch>
-  <v-switch v-model="solvedThem"></v-switch>
+  <v-switch @change="handleSwitch" v-model="solvedYou"></v-switch>
+  <v-switch disabled v-model="solvedThem"></v-switch>
 </v-layout>

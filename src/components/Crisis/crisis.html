@@ -1,13 +1,34 @@
 <v-layout>
+  <v-chip
+    class="resolvedCounter"
+    color="primary lighten-1"
+    block
+    v-if="resolvedCounter>0"
+  >
+    <h3>Resolved&nbsp</h3>
+    <h2 class="yellow--text --darken-1" v-for="n in resolvedCounter">
+      😊
+    </h2></v-chip
+  >
   <crisisStart
     v-if="crisisStatus == crisisENUM.NOT_STARTED"
     @crisisStartEvent="handleCrisisStart"
+    @advanceCrisis="handleAdvanceCrisis"
     :show="show"
   ></crisisStart>
   <v-chip color="warning" block v-if="crisisStatus == crisisENUM.PENDING"
     ><strong>Pending</strong></v-chip
   >
-  <crisisNotice :showDialog="crisisStatus == crisisENUM.PENDING"></crisisNotice>
-  <crisisControls v-if="crisisStatus == crisisENUM.ONGOING"></crisisControls>
+  <crisisNotice
+    :reason="reason"
+    :showDialog="crisisStatus == crisisENUM.PENDING"
+    @advanceCrisis="handleAdvanceCrisis"
+  ></crisisNotice>
+  <crisisControls
+    :solvedYou="solvedYou"
+    :solvedThem="solvedThem"
+    @solvedYouChange="handleSolvedYouChange"
+    v-if="crisisStatus == crisisENUM.ONGOING"
+  ></crisisControls>
   <crisisResolved></crisisResolved>
 </v-layout>

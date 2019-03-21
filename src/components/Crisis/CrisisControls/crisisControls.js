@@ -3,15 +3,18 @@ import { VSwitch } from "vuetify/lib";
 export default {
   data() {
     return {
-      show: false,
-      solvedYou: false,
-      solvedThem: false
+      solvedYou: false
     };
   },
   props: {
     on: Object,
     state: Number,
-    show: Boolean
+    solvedThem: Boolean
   },
-  components: { VSwitch }
+  components: { VSwitch },
+  methods: {
+    handleSwitch: function() {
+      this.$emit("solvedYouChange", this.solvedYou);
+    }
+  }
 };
