@@ -33,7 +33,7 @@ const ChatModule = {
       };
       commit("setChat", { id: chatID, message: message });
     },
-    setCurrentChat(state, id) {
+    setCurrentChat(commit, id) {
       commit("setCurrentChat", id);
     },
     addCrisis({ commit }, payload) {
