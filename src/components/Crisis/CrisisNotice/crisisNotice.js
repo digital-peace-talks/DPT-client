@@ -24,7 +24,7 @@ export default {
       return [this.$store.getters.chats[this.chatID].messages[0]];
     },
     due() {
-      return [this.$store.getters.chats[this.chatID].crisises[0].due];
+      return this.$store.getters.chats[this.chatID].crisises.slice(-1)[0].due;
     }
   },
   methods: {

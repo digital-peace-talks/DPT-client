@@ -35,7 +35,7 @@ export default {
      */
     handleStatementClicked(statementId, statementText) {
       if (this.$route.params.id !== undefined) {
-        this.$router.push(`/chat/${statementId}`);
+        this.$router.push(`/dialog/${statementId}`);
       } else {
         this.selectedIndex = statementId;
         this.selectedStatement = statementText;

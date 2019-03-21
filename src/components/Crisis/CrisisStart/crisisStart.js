@@ -66,9 +66,12 @@ export default {
     startCrisis() {
       this.$emit("crisisStartEvent", {
         reason: this.reason,
-        due: this.time
+        due: this.timeToDate(this.time)
       });
       this.$emit("advanceCrisis");
+    },
+    timeToDate(time) {
+      return time > 23 ? time - 23 + " hours" : time + " days";
     }
   }
 };

@@ -9,7 +9,7 @@ export default {
     show: false,
     solvedThem: true,
     solvedYou: false,
-    resolvedCounter: 1,
+    resolvedCounter: 0,
     crisisENUM: Object.freeze({
       NOT_STARTED: 0,
       PENDING: 1,
@@ -18,7 +18,8 @@ export default {
       FAILURE: 4
     }),
     crisisStatus: 0,
-    reason: ""
+    reason: "",
+    due: ""
   }),
   components: {
     crisisControls: CrisisControls,
@@ -39,6 +40,7 @@ export default {
         chatID: this.$route.params.id
       });
       this.reason = value.reason;
+      this.due = value.due;
     },
     handleAdvanceCrisis() {
       this.crisisStatus += 1;

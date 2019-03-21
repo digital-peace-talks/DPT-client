@@ -47,8 +47,8 @@ export default {
   },
   watch: {
     "$route.params.id"() {
-      this.setCurrentChat();
       this.loadChat();
+      //this.setCurrentChat();
     }
   },
   methods: {

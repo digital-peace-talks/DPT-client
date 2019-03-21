@@ -24,20 +24,14 @@ export default new Router({
       component: SignUp
     },
     {
-      path: "/chat",
+      path: "/dialog",
       name: "chats",
       component: Chats
     },
     {
-      path: "/chat/:id",
+      path: "/dialog/:id",
       name: "Chat",
       component: Chat,
-      props: true
-    },
-    {
-      path: "/crisis",
-      name: "Crisis",
-      component: Crisis,
       props: true
     }
   ],

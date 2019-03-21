@@ -1,7 +1,10 @@
 <div>
   <v-list subheader>
     <v-toolbar dark color="success">
-      <v-toolbar-title>Recent Dialogs</v-toolbar-title>
+      <v-toolbar-title
+        >Statements for question:"What should be done about climate
+        change"</v-toolbar-title
+      >
     </v-toolbar>
     <v-list-tile
       avatar
@@ -17,6 +20,10 @@
       </v-list-tile-action>
     </v-list-tile>
   </v-list>
-  <request @showDialogChange="handleShowRequestsDialogChanged" :statement="selectedStatement"
-           :showDialog="showRequestDialog" :index="selectedIndex"></Request>
+  <request
+    @showDialogChange="handleShowRequestsDialogChanged"
+    :statement="selectedStatement"
+    :showDialog="showRequestDialog"
+    :index="selectedIndex"
+  ></request>
 </div>

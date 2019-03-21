@@ -24,11 +24,13 @@
     :showDialog="crisisStatus == crisisENUM.PENDING"
     @advanceCrisis="handleAdvanceCrisis"
   ></crisisNotice>
-  <crisisControls
-    :solvedYou="solvedYou"
-    :solvedThem="solvedThem"
-    @solvedYouChange="handleSolvedYouChange"
-    v-if="crisisStatus == crisisENUM.ONGOING"
-  ></crisisControls>
+  <v-layout v-if="crisisStatus == crisisENUM.ONGOING">
+    Is the crisis solved?
+    <crisisControls
+      :solvedYou="solvedYou"
+      :solvedThem="solvedThem"
+      @solvedYouChange="handleSolvedYouChange"
+    ></crisisControls>
+  </v-layout>
   <crisisResolved></crisisResolved>
 </v-layout>

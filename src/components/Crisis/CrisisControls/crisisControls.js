@@ -1,4 +1,4 @@
-import { VSwitch } from "vuetify/lib";
+import { VSwitch, VChip, VFlex, VCard, VSpacer } from "vuetify/lib";
 
 export default {
   data() {
@@ -11,7 +11,7 @@ export default {
     state: Number,
     solvedThem: Boolean
   },
-  components: { VSwitch },
+  components: { VSwitch, VChip, VFlex, VCard, VSpacer },
   methods: {
     handleSwitch: function() {
       this.$emit("solvedYouChange", this.solvedYou);

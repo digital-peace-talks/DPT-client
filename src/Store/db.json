@@ -20,7 +20,7 @@
     },
     {
       "participants": ["", ""],
-      "statement": "Batman can defeat superman",
+      "statement": "I think we need to call Batman to fix climate change ;)",
       "messages": [
         { "user": "alice", "content": "the", "date": "1.1.2019" },
         { "user": "bob", "content": "slow", "date": "1.1.2019" },
