@@ -71,7 +71,7 @@ export default {
       this.$emit("advanceCrisis");
     },
     timeToDate(time) {
-      return time > 23 ? time - 23 + " hours" : time + " days";
+      return time > 23 ? time - 23 + " days" : time + " hours";
     }
   }
 };
