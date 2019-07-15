@@ -45,7 +45,13 @@ export default {
             if (this.shouldRememberMnemonic) {
                 this.saveMnemonic(this.mnemonic);
             }
-            this.$refs.recaptcha.execute();
+
+            // disable recaptcha for now, re-enable it, when needed
+            if(0) {
+               this.$refs.recaptcha.execute();
+            } else {
+               this.$router.push("/chat");
+            }
         },
         recaptchaCallback(recaptchaToken) {
             if (recaptchaToken != null) {
